@@ -20,7 +20,7 @@ public class Spawner : MonoBehaviour
 
 
      float prefabSpacing; // Spacing between each prefab
-     float startPositionZ = 2f; // Starting position on the Z-axis
+     float startPositionZ = 17f; // Starting position on the Z-axis
 
 
     void Awake()
@@ -53,8 +53,10 @@ public class Spawner : MonoBehaviour
             index = Random.Range(0, levelPrefabs.Length); //exclusive OR            // int index = i % levelPrefabs.Length;
 
             // Instantiate the prefab at the current position
-             GameObject instance =  Instantiate(levelPrefabs[index], new Vector3(xPos, levelPrefabs[index].transform.position.y+yPos, zPos), Quaternion.identity);
-             instance.name = levelPrefabs[index].name+"_" +(i+1);   
+             GameObject instance =  Instantiate(levelPrefabs[index], new Vector3(xPos, levelPrefabs[index].transform.position.y+yPos, zPos+transform.position.z), Quaternion.identity);
+            //+parentTransform.
+
+            instance.name = levelPrefabs[index].name+"_" +(i+1);   
              instance.transform.SetParent(parentTransform);
 
             // Increment the Z-coordinate for the next instantiation
