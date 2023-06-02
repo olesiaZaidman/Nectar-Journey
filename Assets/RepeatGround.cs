@@ -10,8 +10,6 @@ public class RepeatGround : MonoBehaviour
     public UnityEvent createLevel;
     public GameObject groundPrefab;
 
-    float zStartPosition = -15.2f;
-
     private Vector3 startPosition = new Vector3(0, -4.3f, -15.2f);
     private Vector3 nextPosition = new Vector3(0, 0, 0);
 
@@ -57,14 +55,14 @@ public class RepeatGround : MonoBehaviour
         {
             currentGround.GetComponent<Spawner>().DeleteAllChildren();
             currentGround.transform.position = nextPosition;
-            currentGround.GetComponent<Spawner>().ReSpawnLevelPrefabs(currentGround.transform.position.z); // zStartPosition
+            currentGround.GetComponent<Spawner>().ReSpawnLevelPrefabs(currentGround); 
 
         }
         if (GroundRespawnCheck(nextGround))
         {
             nextGround.GetComponent<Spawner>().DeleteAllChildren();
             nextGround.transform.position = nextPosition;
-            nextGround.GetComponent<Spawner>().ReSpawnLevelPrefabs(nextGround.transform.position.z);// zStartPosition
+            nextGround.GetComponent<Spawner>().ReSpawnLevelPrefabs(nextGround);
         }
     }
 

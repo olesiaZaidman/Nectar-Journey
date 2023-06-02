@@ -8,84 +8,86 @@ using UnityEngine.UIElements;
 public class Spawner : MonoBehaviour
 {
     BoxCollider colliderGround;
-   public GameObject[] levelPrefabs;
+
     public Transform parentTransform;
     int index;
-  //  float width;
     float length;
     float xPos =0f;
     float yPos = -3.5f;
     float zPos;
-    int amountPrefabs = 10;
-
-
      float prefabSpacing; // Spacing between each prefab
-    // float startPositionZ = 17f; // Starting position on the Z-axis
+     float startPositionZ = 17f; // Starting position on the Z-axis
 
+    // int amountPrefabs;
+
+    // GameObject[] levelPrefabs;
+   // LevelPrefabManager levelPrefabManager;
 
     void Awake()
-    {
+    { 
         parentTransform = GetComponent<Transform>();    
         colliderGround = GetComponent<BoxCollider>();
-
-     //   width = colliderGround.bounds.size.x / 2;
         length = colliderGround.bounds.size.z / 2;
-      //  xPos = width;
-        prefabSpacing = (length*2) / amountPrefabs; //= 4f;
-      //  zPos = startPositionZ;
 
-      //  Debug.Log("width: "+ width+ " "+ "length: "+ length);
+        prefabSpacing = (length*2) / LevelPrefabManager.amountPrefabs; //= 4f;
+
       //  Debug.Log("Array length: " + levelPrefabs.Length); //8
     }
 
     private void Start()
     {
-        SpawnLevelPrefabs(transform.position.z); 
-    }
-
-
-    void SpawnLevelPrefabs(float _offset)
-    {
-        float startPositionZ = 17f;
-        zPos = startPositionZ;
-        //instantiate 10 prefabs at intervals of 4 units on the Z-axis:
-        for (int i = 0; i < amountPrefabs; i++)
-        {
-            // Calculate the index of the prefab to instantiate
-            index = Random.Range(0, levelPrefabs.Length); //exclusive OR            // int index = i % levelPrefabs.Length;
-
-            // Instantiate the prefab at the current position
-             GameObject instance =  Instantiate(levelPrefabs[index], new Vector3(xPos,yPos+ levelPrefabs[index].transform.position.y, zPos+_offset), Quaternion.identity);
-            //+parentTransform.
-
-            instance.name = levelPrefabs[index].name+"_" +(i+1);   
-             instance.transform.SetParent(parentTransform);
-
-            // Increment the Z-coordinate for the next instantiation
-            zPos -= prefabSpacing;
+        if (LevelPrefabManager.SetIsReady)
+        { 
+            SpawnLevelPrefabs(LevelPrefabManager.GetPrefabs(), transform.position.z);
         }
+
     }
 
-    public void ReSpawnLevelPrefabs(float _offset)
+    void SpawnLevelPrefabs(GameObject[] _levelPrefabs, float _offset)
     {
-        float startPositionZ = 17f;
         zPos = startPositionZ;
         //instantiate 10 prefabs at intervals of 4 units on the Z-axis:
-        for (int i = 0; i < amountPrefabs; i++)
+        for (int i = 0; i < LevelPrefabManager.amountPrefabs; i++)
         {
             // Calculate the index of the prefab to instantiate
-            index = Random.Range(0, levelPrefabs.Length); //exclusive OR            // int index = i % levelPrefabs.Length;
+            index = Random.Range(0, _levelPrefabs.Length); //exclusive OR            // int index = i % levelPrefabs.Length;
 
             // Instantiate the prefab at the current position
-            GameObject instance = Instantiate(levelPrefabs[index], new Vector3(xPos, yPos + levelPrefabs[index].transform.position.y, zPos + _offset), Quaternion.identity);
+             GameObject instance =  Instantiate(_levelPrefabs[index], new Vector3(xPos,yPos+ _levelPrefabs[index].transform.position.y, zPos+_offset), Quaternion.identity);
             //+parentTransform.
 
-            instance.name = levelPrefabs[index].name + "_" + (i + 1);
+            instance.name = _levelPrefabs[index].name+"_" +(i+1);   
             instance.transform.SetParent(parentTransform);
 
             // Increment the Z-coordinate for the next instantiation
             zPos -= prefabSpacing;
         }
+    }
+
+    public void ReSpawnLevelPrefabs(GameObject _ground) 
+    {
+
+        SpawnLevelPrefabs(LevelPrefabManager.GetPrefabs(), _ground.transform.position.z);//float _offset = _ground.transform.position.z)
+
+
+
+        //zPos = startPositionZ;
+        ////instantiate 10 prefabs at intervals of 4 units on the Z-axis:
+        //for (int i = 0; i < LevelPrefabManager.amountPrefabs; i++)
+        //{
+        //    // Calculate the index of the prefab to instantiate
+        //    index = Random.Range(0, LevelPrefabManager.GetPrefabs().Length); //exclusive OR            // int index = i % levelPrefabs.Length;
+
+        //    // Instantiate the prefab at the current position
+        //    GameObject instance = Instantiate(LevelPrefabManager.GetPrefabs()[index], new Vector3(xPos, yPos + LevelPrefabManager.GetPrefabs()[index].transform.position.y, zPos + _offset), Quaternion.identity);
+        //    //+parentTransform.
+
+        //    instance.name = LevelPrefabManager.GetPrefabs()[index].name + "_" + (i + 1);
+        //    instance.transform.SetParent(parentTransform);
+
+        //    // Increment the Z-coordinate for the next instantiation
+        //    zPos -= prefabSpacing;
+        //}
     }
 
     public void DeleteAllChildren()
