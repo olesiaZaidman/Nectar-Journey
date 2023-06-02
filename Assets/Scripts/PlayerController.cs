@@ -62,15 +62,6 @@ public class PlayerController : MonoBehaviour
     //    isRotating = false;
     //}
 
-    void OnCollisionEnter(Collision other)
-    {
-        //Hazard
-        if (other.collider.gameObject.CompareTag("Hazard"))
-        {
-            print("Collided with a hazard!");
-        }
-    }
-
     public void TurnPlayerInDirection(int _direction)
     {
         //rb.AddTorque(Vector3.right * _direction);
