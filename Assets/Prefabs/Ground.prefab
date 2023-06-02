@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5779089139816508745}
   - component: {fileID: 5779089139816508748}
   - component: {fileID: 5779089139816508749}
+  - component: {fileID: -8376077955535287208}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Hazard
@@ -110,3 +111,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-8376077955535287208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5779089139816508743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a44b0905240e24596f9f3f865d8633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelPrefabs:
+  - {fileID: 8369655174634185803, guid: 8a997830a5a8b174f9c8ce7f18d7397e, type: 3}
+  - {fileID: 3741218946565044961, guid: 63a6f84fbd0380748a867d77943670ec, type: 3}
+  - {fileID: 8275651259016475000, guid: 42ee7104e5e1afc449940b2f4a5897b9, type: 3}
+  - {fileID: 4607321089309267924, guid: 12a8e3928131cc04dafd1133115dc382, type: 3}
+  - {fileID: 6770986357036522035, guid: ad20bbb53cb3e714eacc09d60c523f77, type: 3}
+  - {fileID: 1908277060475533247, guid: e4d570287ec3e9f4997b977f87032213, type: 3}
+  - {fileID: 6299230456518539785, guid: 12dc8536524e323489a2ebfa2f220be9, type: 3}
+  - {fileID: 9015561168601653106, guid: f1e3d367b09a5634ca223a2a0a6ba72d, type: 3}
+  parentTransform: {fileID: 0}

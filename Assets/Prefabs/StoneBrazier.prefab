@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6299230456518539785}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.7417812, y: 1.7417803, z: 1.7417803}
   m_ConstrainProportionsScale: 0
@@ -105,6 +105,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6299230456518539784}
     m_Modifications:
+    - target: {fileID: 2128562871506984832, guid: e9519a24b94a67647a1db5e3c5d33136, type: 3}
+      propertyPath: moveWithTransform
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2128562871506984832, guid: e9519a24b94a67647a1db5e3c5d33136, type: 3}
       propertyPath: TriggerModule.primitives.Array.data[0]
       value: 

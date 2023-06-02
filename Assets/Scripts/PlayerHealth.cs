@@ -28,19 +28,19 @@ public class PlayerHealth : MonoBehaviour
     void OnCollisionEnter(Collision other)
     {
         //Hazard
-        if (other.collider.gameObject.CompareTag("Flower"))
+        if (other.collider.gameObject.CompareTag("Hazard"))
+        {
+            print("Triggered by a hazard!");
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {    
+        if (other.gameObject.CompareTag("Flower"))
         {
             RecoverPlayerEnergy();
         }
     }
-
-    //void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject.CompareTag("Hazard"))
-    //    {
-    //        print("Triggered by a hazard!");
-    //    }
-    //}
 
 
 
