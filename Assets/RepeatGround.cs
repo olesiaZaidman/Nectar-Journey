@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.Events;
 
 public class RepeatGround : MonoBehaviour
 {
+    public UnityEvent createLevel;
     public GameObject groundPrefab;
+
+    float zStartPosition = -15.2f;
 
     private Vector3 startPosition = new Vector3(0, -4.3f, -15.2f);
     private Vector3 nextPosition = new Vector3(0, 0, 0);
@@ -14,6 +18,8 @@ public class RepeatGround : MonoBehaviour
     GameObject currentGround;
     GameObject nextGround;
     BoxCollider prefabCollider;
+
+ 
 
     public float zDistanceBetweenPrefabs; // = 40f
     private void Awake()
@@ -49,11 +55,16 @@ public class RepeatGround : MonoBehaviour
     {
         if (GroundRespawnCheck(currentGround))
         {
+            currentGround.GetComponent<Spawner>().DeleteAllChildren();
             currentGround.transform.position = nextPosition;
+            currentGround.GetComponent<Spawner>().ReSpawnLevelPrefabs(currentGround.transform.position.z); // zStartPosition
+
         }
         if (GroundRespawnCheck(nextGround))
         {
+            nextGround.GetComponent<Spawner>().DeleteAllChildren();
             nextGround.transform.position = nextPosition;
+            nextGround.GetComponent<Spawner>().ReSpawnLevelPrefabs(nextGround.transform.position.z);// zStartPosition
         }
     }
 
