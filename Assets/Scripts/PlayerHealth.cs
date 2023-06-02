@@ -4,25 +4,6 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-   
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Hazard"))
-        {
-            print("Triggered by a hazard!");
-        }
-    }
-
-
-    void OnCollisionEnter(Collision other)
-    {
-        //Hazard
-        if (other.collider.gameObject.CompareTag("Hazard"))
-        {
-            print("Collided with a hazard!");
-        }
-    }
-
 
     void OnParticleCollision(GameObject other)  //OnParticleTrigger
     {
@@ -38,4 +19,29 @@ public class PlayerHealth : MonoBehaviour
     {
         Debug.Log("Ouch!Hazard particles");
     }
+
+    public void RecoverPlayerEnergy()
+    {
+        Debug.Log("We have more energy!");
+    }
+
+    void OnCollisionEnter(Collision other)
+    {
+        //Hazard
+        if (other.collider.gameObject.CompareTag("Flower"))
+        {
+            RecoverPlayerEnergy();
+        }
+    }
+
+    //void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.gameObject.CompareTag("Hazard"))
+    //    {
+    //        print("Triggered by a hazard!");
+    //    }
+    //}
+
+
+
 }
