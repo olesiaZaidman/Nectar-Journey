@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoadManager : MonoBehaviour
 {
-    public static bool isGameOver;
+   
     int currentSceneIndex;
     int nextSceneIndex;
 
@@ -29,14 +29,14 @@ public class SceneLoadManager : MonoBehaviour
 
 
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        isGameOver = false;
+
         //  int nextSceneIndex = (currentSceneIndex + 1) % SceneManager.sceneCountInBuildSettings;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isGameOver)
+        if (GameData.isGameOver)
         {
             gameOverCanvas.SetActive(true);
             gamePlayCanvas.SetActive(false);
@@ -61,6 +61,7 @@ public class SceneLoadManager : MonoBehaviour
     public void ReloadGame()
     {
         StartCoroutine(WaitAndLoad(1f, currentSceneIndex));
+       // GameData.isGameOver = false;
     }
 
 

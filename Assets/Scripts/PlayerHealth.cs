@@ -10,6 +10,13 @@ public class PlayerHealth : MonoBehaviour
 
     public UnityEvent increaseHealthBar;
     bool isEnergized = false;
+    UIController uIController;
+
+    private void Awake()
+    {
+        uIController = FindObjectOfType<UIController>();    
+    }
+
     void OnParticleCollision(GameObject other)  //OnParticleTrigger
     {
         //Particle
@@ -27,7 +34,7 @@ public class PlayerHealth : MonoBehaviour
         {
             dieFX.Play();
             Destroy(gameObject, 0.5f);
-            SceneLoadManager.isGameOver = true;
+            GameData.isGameOver = true;
         }
     }
 
@@ -36,7 +43,7 @@ public class PlayerHealth : MonoBehaviour
     void OnCollisionEnter(Collision other)
     {
         //Hazard
-        if (other.collider.gameObject.CompareTag("Hazard") && !SceneLoadManager.isGameOver)
+        if (other.collider.gameObject.CompareTag("Hazard") && !GameData.isGameOver)
         {
             print("Triggered by a hazard!");
             HurtPlayer();
@@ -45,9 +52,11 @@ public class PlayerHealth : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {    
-        if (other.gameObject.CompareTag("Flower") && !SceneLoadManager.isGameOver)
+        if (other.gameObject.CompareTag("Flower") && !GameData.isGameOver)
         {
             RecoverPlayerEnergy();
+            GameData.IncreaseScore();
+            uIController.UpdateScore();
         }
     }
     public void RecoverPlayerEnergy()

@@ -93,4 +93,6 @@ public class PlayerController : MonoBehaviour
         //rb.AddTorque(Vector3.right * _direction);
         //(Vector3.right * _direction, Space.Self);     
     }
+
+    
 }
