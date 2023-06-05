@@ -16,12 +16,13 @@ public class RepeatGround : MonoBehaviour
     GameObject currentGround;
     GameObject nextGround;
     BoxCollider prefabCollider;
+    LevelPrefabManager levelPrefabManager;
 
- 
 
     public float zDistanceBetweenPrefabs; // = 40f
     private void Awake()
     {
+        levelPrefabManager = FindObjectOfType<LevelPrefabManager>();    
         if (groundPrefab != null)
         {
             // Instantiate the prefab
@@ -53,6 +54,7 @@ public class RepeatGround : MonoBehaviour
     {
         if (GroundRespawnCheck(currentGround))
         {
+            levelPrefabManager.CreateNewPrefabsSet();
             currentGround.GetComponent<Spawner>().DeleteAllChildren();
             currentGround.transform.position = nextPosition;
             currentGround.GetComponent<Spawner>().ReSpawnLevelPrefabs(currentGround); 
@@ -60,6 +62,7 @@ public class RepeatGround : MonoBehaviour
         }
         if (GroundRespawnCheck(nextGround))
         {
+            levelPrefabManager.CreateNewPrefabsSet();
             nextGround.GetComponent<Spawner>().DeleteAllChildren();
             nextGround.transform.position = nextPosition;
             nextGround.GetComponent<Spawner>().ReSpawnLevelPrefabs(nextGround);

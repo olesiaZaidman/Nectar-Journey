@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class LevelPrefabManager : MonoBehaviour
 {
@@ -10,53 +11,169 @@ public class LevelPrefabManager : MonoBehaviour
 
     [Range(0f, 1f)]
     public float difficulty = 0.5f;
+    float difficultyMax = 0.7f;
+
     public GameObject[] levelFlowerPrefabs;
     public GameObject[] levelHazardPrefabs;
     static GameObject[] levelPrefabs;
 
      static bool setIsReady = false;
     public static bool SetIsReady { get { return setIsReady;  } }
+
+    //public float arrayAPercentage = 0.7f;
+    //    public float arrayBPercentage = 0.3f;
+
+    //public int numberOfObjectsToAdd = 10; // Change this to the desired number of objects
+
+    public List<GameObject> combinedList = new List<GameObject>();
+
+    private int counter = 0;
+
     void Awake()
     {
-        levelPrefabs = CreatePrefabsLevelSet(levelFlowerPrefabs, levelHazardPrefabs, difficulty);
+        CombineArrays(); 
+        
+        levelPrefabs = AddRandomObjectsToList(difficulty);
+        //levelPrefabs = CreatePrefabsLevelSet(levelFlowerPrefabs, levelHazardPrefabs, difficulty);
         setIsReady = true;
         //OR CreateNewPrefabsSet();
     }
 
-    // Update is called once per frame
-    void Update()
+    void IncreaseDifficulty() //float _increase
     {
-
+        float diff = 0.1f;
+        difficulty += diff;
+        difficulty = Mathf.Clamp(difficulty, 0f, difficultyMax);
+        Debug.Log("Difficulty was increased");
     }
+
+    private void CombineArrays()
+    {
+        combinedList.AddRange(levelFlowerPrefabs);
+        combinedList.AddRange(levelHazardPrefabs);
+    }
+
+    /*By combining the arrays, you create a unified pool of GameObjects from which you can randomly select objects
+     * to add to the final list. This is necessary because you want to randomly select GameObjects from both arrays A and B 
+     * based on their respective probabilities.
+
+If you didn't combine the arrays and instead tried to select objects separately from each array, 
+    it would be difficult to achieve the desired probability distribution accurately. Combining the arrays allows you 
+    to treat the objects from both arrays as a single collection, making it easier to randomly select GameObjects
+    based on the specified probabilities.*/
+
+  public void CreateNewPrefabsSet()
+    {
+        if (counter % 4 == 0)
+        {
+            IncreaseDifficulty();
+        }
+        levelPrefabs = AddRandomObjectsToList(difficulty);
+        counter++;
+    }
+
+    private GameObject[] AddRandomObjectsToList(float _difficulty)
+    {
+        combinedList.Clear();
+        //  int badObjectAmount = (int)(amountPrefabs * _difficulty);
+        // int goodObjectsAmount = amountPrefabs - badObjectAmount;
+
+        //Diff = 0,6 : Good amount:  4 Bad amount:  6
+
+
+        float badObjectAmount = _difficulty;
+        float goodObjectsAmount = 1 - badObjectAmount;
+        Debug.Log("Good amount:  "+ goodObjectsAmount +" "+ "Bad amount:  "+ badObjectAmount);
+        // Diff = 0,6 :  Good amount:  0.323 Bad amount:  0.677
+
+
+        for (int i = 0; i < amountPrefabs; i++)
+        {
+            float randomValue = Random.value; //random float between 0-1
+           // Debug.Log("random Value:  " + randomValue);
+
+            if (randomValue < goodObjectsAmount)
+            {
+                int randomIndex = Random.Range(0, levelFlowerPrefabs.Length);
+                combinedList.Add(levelFlowerPrefabs[randomIndex]);
+             //   Debug.Log("Good one Added ");
+            }
+            else
+            {
+                int randomIndex = Random.Range(0, levelHazardPrefabs.Length);
+                combinedList.Add(levelHazardPrefabs[randomIndex]);
+
+              //  Debug.Log("Bad one Added ");
+            }
+        }
+
+        // Print the generated list for testing
+      //  foreach (GameObject obj in combinedList)
+      //  {
+            //Debug.Log(obj.name);
+       // }
+
+        return combinedList.ToArray();
+    }
+
 
     public static GameObject[] GetPrefabs()
     {
         return levelPrefabs;
     }
 
-    public void CreateNewPrefabsSet()
+    //public void CreateNewPrefabsSet()
+    //{
+    //    levelPrefabs = CreatePrefabsLevelSet(levelFlowerPrefabs, levelHazardPrefabs, difficulty);
+    //}
+
+    public GameObject[] ReshuffleList()
     {
-        levelPrefabs = CreatePrefabsLevelSet(levelFlowerPrefabs, levelHazardPrefabs, difficulty);
+        /*Fisher-Yates algorithm. It iterates through the list in reverse order 
+         * and swaps each element with a randomly selected element from the remaining portion of the list.*/
+        for (int i = combinedList.Count - 1; i > 0; i--)
+        {
+            int randomIndex = Random.Range(0, i + 1);
+            GameObject temp = combinedList[i];
+            combinedList[i] = combinedList[randomIndex];
+            combinedList[randomIndex] = temp;
+        }
+
+        // Print the reshuffled list for testing
+        foreach (GameObject obj in combinedList)
+        {
+            Debug.Log(obj.name);
+        }
+        return combinedList.ToArray();
     }
 
 
 
     GameObject[] CreatePrefabsLevelSet(GameObject[] _goodPrefabs, GameObject[] _badPrefabs, float _proportionDifficulty)
     {
-        //   index = Random.Range(0, levelPrefabs.Length);
-        int badArraySize = (int)(amountPrefabs * _proportionDifficulty);
-        int goodArraySize = amountPrefabs - badArraySize;
+        List<GameObject> prefabsList = new List<GameObject>();
+        float randomIndex = Random.Range(0.1f, _proportionDifficulty);
 
-        Debug.Log("badArraySize: " + badArraySize);
-        Debug.Log("goodArraySize: " + goodArraySize);
-
-        GameObject[] array1 = ChoosePrefabs(_badPrefabs, badArraySize);
-        GameObject[] array2 = ChoosePrefabs(_goodPrefabs, goodArraySize);
-
-        GameObject[] levelSet = MergeArrays(array1, array2);
-
-        return levelSet;
+        return prefabsList.ToArray();
     }
+
+
+    //GameObject[] CreatePrefabsLevelSet(GameObject[] _goodPrefabs, GameObject[] _badPrefabs, float _proportionDifficulty)
+    //{
+    //    //   index = Random.Range(0, levelPrefabs.Length);
+    //    int badObjectAmount = (int)(amountPrefabs * _proportionDifficulty);
+    //    int goodObjectsAmount = amountPrefabs - badObjectAmount;
+
+    //    Debug.Log("badObjectAmount: " + badObjectAmount);
+    //    Debug.Log("goodObjectsAmount: " + goodObjectsAmount);
+
+    //    GameObject[] array1 = ChoosePrefabs(_badPrefabs, badObjectAmount);
+    //    GameObject[] array2 = ChoosePrefabs(_goodPrefabs, goodObjectsAmount);
+
+    //    GameObject[] levelSet = MergeArrays(array1, array2);
+
+    //    return levelSet;
+    //}
 
     GameObject[] ChoosePrefabs(GameObject[] _prefabCollection, int _amount)
     {       
