@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -8376077955535287208}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Hazard
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,19 +123,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a44b0905240e24596f9f3f865d8633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelFlowerPrefabs:
-  - {fileID: 8369655174634185803, guid: 8a997830a5a8b174f9c8ce7f18d7397e, type: 3}
-  - {fileID: 3741218946565044961, guid: 63a6f84fbd0380748a867d77943670ec, type: 3}
-  - {fileID: 2196160479555193137, guid: 7ab32fd240aecd64086e4f469128f3fb, type: 3}
-  - {fileID: 8736735096766432224, guid: 76891008c148ff24b9507aa155029f1c, type: 3}
-  - {fileID: 6770986357036522035, guid: ad20bbb53cb3e714eacc09d60c523f77, type: 3}
-  - {fileID: 8824275428183991046, guid: 30f33e1b3c5981b408e9c755f755dfbc, type: 3}
-  - {fileID: 2320163516738837382, guid: 13fd0dffbce68e1498b7afb849273349, type: 3}
-  - {fileID: 4607321089309267924, guid: 12a8e3928131cc04dafd1133115dc382, type: 3}
-  - {fileID: 2053751433417708250, guid: e35d35d8e1537ab4ea87a34cf7cf56a1, type: 3}
-  - {fileID: 8275651259016475000, guid: 42ee7104e5e1afc449940b2f4a5897b9, type: 3}
-  levelHazardPrefabs:
-  - {fileID: 1908277060475533247, guid: e4d570287ec3e9f4997b977f87032213, type: 3}
-  - {fileID: 6299230456518539785, guid: 12dc8536524e323489a2ebfa2f220be9, type: 3}
-  - {fileID: 9015561168601653106, guid: f1e3d367b09a5634ca223a2a0a6ba72d, type: 3}
   parentTransform: {fileID: 0}

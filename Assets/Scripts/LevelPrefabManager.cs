@@ -20,23 +20,17 @@ public class LevelPrefabManager : MonoBehaviour
      static bool setIsReady = false;
     public static bool SetIsReady { get { return setIsReady;  } }
 
-    //public float arrayAPercentage = 0.7f;
-    //    public float arrayBPercentage = 0.3f;
-
-    //public int numberOfObjectsToAdd = 10; // Change this to the desired number of objects
-
     public List<GameObject> combinedList = new List<GameObject>();
 
     private int counter = 0;
 
     void Awake()
     {
-        CombineArrays(); 
-        
+        CombineArrays();     
         levelPrefabs = AddRandomObjectsToList(difficulty);
         //levelPrefabs = CreatePrefabsLevelSet(levelFlowerPrefabs, levelHazardPrefabs, difficulty);
         setIsReady = true;
-        //OR CreateNewPrefabsSet();
+        counter++;
     }
 
     void IncreaseDifficulty() //float _increase
@@ -46,6 +40,17 @@ public class LevelPrefabManager : MonoBehaviour
         difficulty = Mathf.Clamp(difficulty, 0f, difficultyMax);
         Debug.Log("Difficulty was increased");
     }
+
+    public void CreateNewPrefabsSet()
+    {
+        if (counter % 4 == 0)
+        {
+            IncreaseDifficulty();
+        }
+        levelPrefabs = AddRandomObjectsToList(difficulty);
+        counter++;
+    }
+
 
     private void CombineArrays()
     {
@@ -62,15 +67,6 @@ If you didn't combine the arrays and instead tried to select objects separately 
     to treat the objects from both arrays as a single collection, making it easier to randomly select GameObjects
     based on the specified probabilities.*/
 
-  public void CreateNewPrefabsSet()
-    {
-        if (counter % 4 == 0)
-        {
-            IncreaseDifficulty();
-        }
-        levelPrefabs = AddRandomObjectsToList(difficulty);
-        counter++;
-    }
 
     private GameObject[] AddRandomObjectsToList(float _difficulty)
     {
@@ -96,22 +92,14 @@ If you didn't combine the arrays and instead tried to select objects separately 
             {
                 int randomIndex = Random.Range(0, levelFlowerPrefabs.Length);
                 combinedList.Add(levelFlowerPrefabs[randomIndex]);
-             //   Debug.Log("Good one Added ");
+
             }
             else
             {
                 int randomIndex = Random.Range(0, levelHazardPrefabs.Length);
                 combinedList.Add(levelHazardPrefabs[randomIndex]);
-
-              //  Debug.Log("Bad one Added ");
             }
         }
-
-        // Print the generated list for testing
-      //  foreach (GameObject obj in combinedList)
-      //  {
-            //Debug.Log(obj.name);
-       // }
 
         return combinedList.ToArray();
     }
@@ -176,7 +164,7 @@ If you didn't combine the arrays and instead tried to select objects separately 
     //}
 
     GameObject[] ChoosePrefabs(GameObject[] _prefabCollection, int _amount)
-    {       
+    {
         GameObject[] collection = new GameObject[_amount];
 
         for (int i = 0; i < collection.Length; i++)

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    float velocity = 4f;
+    float velocity = 6f;
     Rigidbody rb;
   //  public float rotationSpeed = 100f;
   //  private bool isRotating = false;  // Track if rotation is in progress
