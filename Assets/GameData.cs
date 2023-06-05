@@ -10,6 +10,8 @@ public class GameData : MonoBehaviour
     public static int PlayerHP { get { return playerHP; } }
     public static int PlayerMaxHP { get { return playerMaxHP; } }
 
+    public static bool isGameStarted = false;
+
     void Awake()
     {
         playerHP = 100;

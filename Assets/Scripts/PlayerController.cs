@@ -24,6 +24,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if (!GameData.isGameStarted)
+        //{ return; }
+
+
         if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space)) //0 is left click
         {
             // rb.AddForce(new Vector3(0, velocity, 0), ForceMode.Impulse);

@@ -23,7 +23,7 @@ public class RepeatGround : MonoBehaviour
     private void Awake()
     {
         levelPrefabManager = FindObjectOfType<LevelPrefabManager>();    
-        if (groundPrefab != null)
+        if (groundPrefab != null)//&& GameData.isGameStarted
         {
             // Instantiate the prefab
              currentGround = SpawnGround(startPosition);
