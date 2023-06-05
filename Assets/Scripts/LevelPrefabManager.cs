@@ -43,7 +43,7 @@ public class LevelPrefabManager : MonoBehaviour
 
     public void CreateNewPrefabsSet()
     {
-        if (counter % 4 == 0)
+        if (counter % 2 == 0)
         {
             IncreaseDifficulty();
         }

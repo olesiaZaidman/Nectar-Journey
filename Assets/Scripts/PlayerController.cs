@@ -1,16 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
+
     float velocity = 6f;
     Rigidbody rb;
-  //  public float rotationSpeed = 100f;
-  //  private bool isRotating = false;  // Track if rotation is in progress
-  //  private Quaternion targetRotation;  // Target rotation of the GameObject
+    //  public float rotationSpeed = 100f;
+    //  private bool isRotating = false;  // Track if rotation is in progress
+    //  private Quaternion targetRotation;  // Target rotation of the GameObject
 
+    public UnityEvent decreaseHealthBar;
 
+    bool spentEnergy = false;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -23,6 +28,15 @@ public class PlayerController : MonoBehaviour
         {
             // rb.AddForce(new Vector3(0, velocity, 0), ForceMode.Impulse);
             rb.velocity = Vector3.up * velocity;
+
+            if (!spentEnergy)
+            {
+                spentEnergy = true;
+                GameData.DecreasePlayerHP(2);
+                decreaseHealthBar.Invoke();
+                StartCoroutine(FlyCooldown());
+            }
+
 
             Vector3 mousePos = Input.mousePosition;
             float screenWidth = Screen.width;
@@ -48,6 +62,14 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
+    private IEnumerator FlyCooldown()
+    {
+        yield return new WaitForSeconds(0.1f);
+        spentEnergy = false;
+    }
+
+
 
     //private IEnumerator RotateObjectRoutine()
     //{

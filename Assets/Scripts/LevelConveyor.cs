@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelConveyor : MonoBehaviour
 {
-     float speed = 0.003f; //0.003f; try 0.015 for speed up test
+     float speed = 0.006f; //0.003f; try 0.015 for speed up test
     void Start()
     {
         

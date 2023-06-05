@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public ParticleSystem nectarFX;
-    public ParticleSystem dieFX;
+    [SerializeField] ParticleSystem nectarFX;
+    [SerializeField] ParticleSystem dieFX;
+
+    public UnityEvent increaseHealthBar;
+    bool isEnergized = false;
     void OnParticleCollision(GameObject other)  //OnParticleTrigger
     {
         //Particle
@@ -28,15 +31,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void RecoverPlayerEnergy()
-    {
-        Debug.Log("We have more energy!");
-        if (nectarFX != null) 
-        { 
-            nectarFX.Play();
-        }
-       
-    }
+
 
     void OnCollisionEnter(Collision other)
     {
@@ -55,5 +50,23 @@ public class PlayerHealth : MonoBehaviour
             RecoverPlayerEnergy();
         }
     }
+    public void RecoverPlayerEnergy()
+    {
+        Debug.Log("We have more energy!");
+        if (nectarFX != null && !isEnergized)
+        {
+            isEnergized = true;
+            nectarFX.Play();
+            GameData.IncreasePlayerHP(10);
+            increaseHealthBar.Invoke();
+            StartCoroutine(EnergyCooldown());
+        }
 
+    }
+
+    private IEnumerator EnergyCooldown()
+    {
+        yield return new WaitForSeconds(0.3f);
+        isEnergized = false;
+    }
 }
