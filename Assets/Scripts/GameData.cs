@@ -10,16 +10,21 @@ public class GameData : MonoBehaviour
     static int score;
 
     public static bool isGameOver;
+    public static bool isGameFreeze = false;
     public static int PlayerHP { get { return playerHP; } }
     public static int Score { get { return score; } }
     public static int PlayerMaxHP { get { return playerMaxHP; } }
 
-  //  public static bool isGameStarted = false;
+    //  public static bool isGameStarted = false;
 
+    static GameData instance;
 
+    public GameData GetGameDataInstance()
+    { return instance; }
 
     void Awake()
     {
+        ManageSingleton();
         playerHP = 100;
         isGameOver = false;
         score = 0;
@@ -27,9 +32,26 @@ public class GameData : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    void ManageSingleton()
+    {
+        if (instance != null)
+        {
+            gameObject.SetActive(false);
+            Destroy(gameObject);
+        }
+
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
     void Update()
     {
+        if (playerHP <= 0)
+        { 
+            isGameOver = true; 
+        }
         //if (isGameOver)
         //{ Time.timeScale = 0; }
     }

@@ -11,10 +11,11 @@ public class PlayerHealth : MonoBehaviour
     public UnityEvent increaseHealthBar;
     bool isEnergized = false;
     UIController uIController;
-
+    AudioEffects audioSFX;
     private void Awake()
     {
-        uIController = FindObjectOfType<UIController>();    
+        uIController = FindObjectOfType<UIController>();
+        audioSFX = FindObjectOfType<AudioEffects>();    
     }
 
     void OnParticleCollision(GameObject other)  //OnParticleTrigger
@@ -30,11 +31,16 @@ public class PlayerHealth : MonoBehaviour
     public void HurtPlayer()
     {
         Debug.Log("Ouch!Hazard particles");
-        if (dieFX != null)
+        if (dieFX != null && !GameData.isGameOver)
         {
+            GameData.isGameOver = true;
+            if (audioSFX != null)
+            {
+                audioSFX.PlayDieSFX();
+            }
+
             dieFX.Play();
             Destroy(gameObject, 0.5f);
-            GameData.isGameOver = true;
         }
     }
 
@@ -64,6 +70,10 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log("We have more energy!");
         if (nectarFX != null && !isEnergized)
         {
+            if (audioSFX != null)
+            {
+                audioSFX.PlayNectarCollectionSFX();
+            }
             isEnergized = true;
             nectarFX.Play();
             GameData.IncreasePlayerHP(10);

@@ -1,15 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
-using UnityEditor.SceneManagement;
 using UnityEngine;
-using UnityEngine.UIElements;
+
 
 public class Spawner : MonoBehaviour
 {
     BoxCollider colliderGround;
 
-    public Transform parentTransform;
+    Transform parentTransform;
     int index;
     float length;
     float xPos =0f;
@@ -67,27 +65,9 @@ public class Spawner : MonoBehaviour
     public void ReSpawnLevelPrefabs(GameObject _ground) 
     {
 
-        SpawnLevelPrefabs(LevelPrefabManager.GetPrefabs(), _ground.transform.position.z);//float _offset = _ground.transform.position.z)
+        SpawnLevelPrefabs(LevelPrefabManager.GetPrefabs(), _ground.transform.position.z);
+        //float _offset = _ground.transform.position.z)
 
-
-
-        //zPos = startPositionZ;
-        ////instantiate 10 prefabs at intervals of 4 units on the Z-axis:
-        //for (int i = 0; i < LevelPrefabManager.amountPrefabs; i++)
-        //{
-        //    // Calculate the index of the prefab to instantiate
-        //    index = Random.Range(0, LevelPrefabManager.GetPrefabs().Length); //exclusive OR            // int index = i % levelPrefabs.Length;
-
-        //    // Instantiate the prefab at the current position
-        //    GameObject instance = Instantiate(LevelPrefabManager.GetPrefabs()[index], new Vector3(xPos, yPos + LevelPrefabManager.GetPrefabs()[index].transform.position.y, zPos + _offset), Quaternion.identity);
-        //    //+parentTransform.
-
-        //    instance.name = LevelPrefabManager.GetPrefabs()[index].name + "_" + (i + 1);
-        //    instance.transform.SetParent(parentTransform);
-
-        //    // Increment the Z-coordinate for the next instantiation
-        //    zPos -= prefabSpacing;
-        //}
     }
 
     public void DeleteAllChildren()

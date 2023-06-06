@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class UIController : MonoBehaviour
 {
@@ -14,6 +13,7 @@ public class UIController : MonoBehaviour
     void Start()
     {
         SetProgressBar();
+        scoreFinalText.SetText(GameData.Score.ToString());
     }
     void SetProgressBar()
     {

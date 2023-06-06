@@ -11,6 +11,8 @@ public class AudioEffects : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] AudioClip click;
+    [SerializeField] AudioClip swipe;
+    [SerializeField] AudioClip tap;
     [SerializeField] AudioClip sceneLoaded;
     [SerializeField][Range(0f, 1f)] float uiVolume;
 
@@ -20,9 +22,12 @@ public class AudioEffects : MonoBehaviour
     [SerializeField] AudioClip finishSFX;
     [SerializeField][Range(0f, 1f)] float gameFxVolume;
 
+  //  AudioSource audioSource;
+
     void Awake()
     {
         ManageSingleton();
+      //  audioSource = GetComponent<AudioSource>();  
     }
 
     void ManageSingleton()
@@ -40,7 +45,29 @@ public class AudioEffects : MonoBehaviour
         }
     }
 
+    #region UI
 
+    public void PlayClickSFX()
+    {
+        PlaySFXClip(click, uiVolume);
+    }
+
+    public void PlayTapSFX()
+    {
+        PlaySFXClip(tap, uiVolume);
+    }
+
+    public void PlaySwipeSFX()
+    {
+        PlaySFXClip(swipe, uiVolume);
+    }
+    public void PlaySceneLoadedSFX()
+    {
+        PlaySFXClip(sceneLoaded, uiVolume);
+    }
+    #endregion
+
+    #region Game
     public void PlayDieSFX()
     {
         PlaySFXClip(dieSFX, gameFxVolume);
@@ -51,25 +78,22 @@ public class AudioEffects : MonoBehaviour
         PlaySFXClip(finishSFX, gameFxVolume);
     }
 
-    public void PlayClickSFX()
-    {
-        PlaySFXClip(click, uiVolume);
-    }
-    public void PlaySceneLoadedSFX()
-    {
-        PlaySFXClip(sceneLoaded, uiVolume);
-    }
-
     public void PlayNectarCollectionSFX()
     {
         PlaySFXClip(nectarCollectSFX, gameFxVolume);
     }
+
+    #endregion
+
+
     void PlaySFXClip(AudioClip _clip, float _volume)
     {
-        Vector3 _cameraPosition = Camera.main.transform.position;
+       Vector3 _cameraPosition = Camera.main.transform.position;
+
         if (_clip != null)
         {
-            AudioSource.PlayClipAtPoint(_clip, _cameraPosition, _volume);
+
+        AudioSource.PlayClipAtPoint(_clip, _cameraPosition, _volume);          // OR  audioSource.PlayOneShot(_clip, _volume);
         }
     }
 }

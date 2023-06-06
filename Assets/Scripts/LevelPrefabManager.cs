@@ -2,8 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
-using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class LevelPrefabManager : MonoBehaviour
 {
@@ -25,8 +23,7 @@ public class LevelPrefabManager : MonoBehaviour
     private int counter = 0;
 
     void Awake()
-    {
-        CombineArrays();     
+    { 
         levelPrefabs = AddRandomObjectsToList(difficulty);
         //levelPrefabs = CreatePrefabsLevelSet(levelFlowerPrefabs, levelHazardPrefabs, difficulty);
         setIsReady = true;
@@ -52,87 +49,71 @@ public class LevelPrefabManager : MonoBehaviour
     }
 
 
-    private void CombineArrays()
-    {
-        combinedList.AddRange(levelFlowerPrefabs);
-        combinedList.AddRange(levelHazardPrefabs);
-    }
-
-    /*By combining the arrays, you create a unified pool of GameObjects from which you can randomly select objects
-     * to add to the final list. This is necessary because you want to randomly select GameObjects from both arrays A and B 
-     * based on their respective probabilities.
-
-If you didn't combine the arrays and instead tried to select objects separately from each array, 
-    it would be difficult to achieve the desired probability distribution accurately. Combining the arrays allows you 
-    to treat the objects from both arrays as a single collection, making it easier to randomly select GameObjects
-    based on the specified probabilities.*/
-
-
     private GameObject[] AddRandomObjectsToList(float _difficulty)
     {
         combinedList.Clear();
-        //  int badObjectAmount = (int)(amountPrefabs * _difficulty);
-        // int goodObjectsAmount = amountPrefabs - badObjectAmount;
 
-        //Diff = 0,6 : Good amount:  4 Bad amount:  6
+        int badObjectAmount = (int)(amountPrefabs * _difficulty); //floor: 4.8 turns into 4
+        int goodObjectsAmount = amountPrefabs - badObjectAmount;
+
+        //Diff = 0,3 : Good amount:  7 Bad amount:  3
 
 
-        float badObjectAmount = _difficulty;
-        float goodObjectsAmount = 1 - badObjectAmount;
+       // float badObjectAmount = _difficulty;
+     //   float goodObjectsAmount = 1 - badObjectAmount;
         Debug.Log("Good amount:  "+ goodObjectsAmount +" "+ "Bad amount:  "+ badObjectAmount);
         // Diff = 0,6 :  Good amount:  0.323 Bad amount:  0.677
 
 
         for (int i = 0; i < amountPrefabs; i++)
         {
-            float randomValue = Random.value; //random float between 0-1
-           // Debug.Log("random Value:  " + randomValue);
-
-            if (randomValue < goodObjectsAmount)
-            {
-                int randomIndex = Random.Range(0, levelFlowerPrefabs.Length);
-                combinedList.Add(levelFlowerPrefabs[randomIndex]);
-
-            }
-            else
+            if (i < badObjectAmount)
             {
                 int randomIndex = Random.Range(0, levelHazardPrefabs.Length);
                 combinedList.Add(levelHazardPrefabs[randomIndex]);
             }
-        }
+            else 
+            {
+                int randomIndex = Random.Range(0, levelFlowerPrefabs.Length);
+                combinedList.Add(levelFlowerPrefabs[randomIndex]);
+            }
 
+       
+           // float randomValue = Random.value; //random float between 0-1
+           // Debug.Log("random Value:  " + randomValue);
+
+            //if (randomValue < goodObjectsAmount)
+            //{
+            //    
+            //    combinedList.Add(levelFlowerPrefabs[randomIndex]);
+
+            //}
+            //else
+            //{
+            //    int randomIndex = Random.Range(0, levelHazardPrefabs.Length);
+            //    combinedList.Add(levelHazardPrefabs[randomIndex]);
+            //}
+        }
+        ShuffleList(combinedList);
         return combinedList.ToArray();
     }
 
+
+    void ShuffleList(List<GameObject> _list)
+    {  /*Fisher-Yates algorithm. It iterates through the list in reverse order 
+         * and swaps each element with a randomly selected element from the remaining portion of the list.*/
+        for (int i = _list.Count - 1; i > 0; i--)
+        {
+            int randomIndex = Random.Range(0, i + 1);
+            GameObject temp = _list[i];
+            _list[i] = _list[randomIndex];
+            _list[randomIndex] = temp;
+        }
+    }
 
     public static GameObject[] GetPrefabs()
     {
         return levelPrefabs;
-    }
-
-    //public void CreateNewPrefabsSet()
-    //{
-    //    levelPrefabs = CreatePrefabsLevelSet(levelFlowerPrefabs, levelHazardPrefabs, difficulty);
-    //}
-
-    public GameObject[] ReshuffleList()
-    {
-        /*Fisher-Yates algorithm. It iterates through the list in reverse order 
-         * and swaps each element with a randomly selected element from the remaining portion of the list.*/
-        for (int i = combinedList.Count - 1; i > 0; i--)
-        {
-            int randomIndex = Random.Range(0, i + 1);
-            GameObject temp = combinedList[i];
-            combinedList[i] = combinedList[randomIndex];
-            combinedList[randomIndex] = temp;
-        }
-
-        // Print the reshuffled list for testing
-        foreach (GameObject obj in combinedList)
-        {
-            Debug.Log(obj.name);
-        }
-        return combinedList.ToArray();
     }
 
 

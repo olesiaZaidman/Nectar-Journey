@@ -118,7 +118,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 3450396511652630182}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -200,10 +200,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Play
+  m_text: PLAY
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e4d81e7a66382234aa34487d0185bd4d, type: 2}
-  m_sharedMaterial: {fileID: -98844190731941166, guid: e4d81e7a66382234aa34487d0185bd4d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: aec9a1c815f94344e8c4f082c30ddd75, type: 2}
+  m_sharedMaterial: {fileID: 6556910662518854904, guid: aec9a1c815f94344e8c4f082c30ddd75, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
