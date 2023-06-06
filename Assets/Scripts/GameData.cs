@@ -9,14 +9,12 @@ public class GameData : MonoBehaviour
     const int playerMaxHP = 100;
     static int score;
 
-
     public static bool isGameOver;
     public static int PlayerHP { get { return playerHP; } }
-
     public static int Score { get { return score; } }
     public static int PlayerMaxHP { get { return playerMaxHP; } }
 
-    public static bool isGameStarted = false;
+  //  public static bool isGameStarted = false;
 
 
 
@@ -51,6 +49,5 @@ public class GameData : MonoBehaviour
     public static void IncreaseScore()
     {
         score += 10;
-
     }
 }
