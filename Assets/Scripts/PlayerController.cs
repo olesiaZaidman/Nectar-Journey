@@ -6,7 +6,6 @@ using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
-
     float velocity = 6f;
     Rigidbody rb;
     //  public float rotationSpeed = 100f;
@@ -21,6 +20,12 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    public void BoostUp(float _modifier)
+    { 
+    rb.velocity = Vector3.up * velocity* _modifier;            // rb.AddForce(new Vector3(0, velocity, 0), ForceMode.Impulse);
+
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -30,8 +35,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space)) //0 is left click
         {
-            // rb.AddForce(new Vector3(0, velocity, 0), ForceMode.Impulse);
-            rb.velocity = Vector3.up * velocity;
+            BoostUp(1);
 
             if (!spentEnergy)
             {

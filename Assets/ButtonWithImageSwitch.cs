@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
+//using UnityEngine.Events;
 
 
 public class ButtonWithImageSwitch : MonoBehaviour
@@ -11,7 +11,7 @@ public class ButtonWithImageSwitch : MonoBehaviour
     Image buttonImage;
     [SerializeField] Sprite image1;
     [SerializeField] Sprite image2;
-    public UnityEvent onClickEvent;
+   // public UnityEvent onClickEvent;
     bool isImage1 = true;
     void Start()
     {
@@ -36,6 +36,6 @@ public class ButtonWithImageSwitch : MonoBehaviour
         isImage1 = !isImage1;
 
         // Call the function or raise the event
-        onClickEvent.Invoke();
+   //     onClickEvent.Invoke();
     }
 }

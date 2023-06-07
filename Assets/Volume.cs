@@ -11,7 +11,7 @@ public class Volume : MonoBehaviour
     }
 
 
-    void FixedUpdate()
+    void Update()
     {
         audioS.volume = AudioEffects.gameVolume;
     }

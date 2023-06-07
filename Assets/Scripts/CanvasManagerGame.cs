@@ -10,11 +10,14 @@ public class CanvasManagerGame : CanvasManager
    // [SerializeField] GameObject menu;
 
     [SerializeField] GameObject imagePause;
-    bool showGameOver = false;
-   
+    [SerializeField] GameObject hintPanel;
+ 
     MusicPlayer player;
+    UIController uIController;
 
+    bool showGameOver = false;
     bool isMenuOpen = false;
+    bool isHintOpen = false;
     protected override bool IsMenuOpen
     {
         get { return isMenuOpen; }
@@ -27,16 +30,20 @@ public class CanvasManagerGame : CanvasManager
         set { isAudioMute = value; }
     }
 
-    //  AudioEffects audioSFX;
-
-    void Start()
+    private void Awake()
     {
+        uIController = FindObjectOfType<UIController>();
         audioSFX = FindObjectOfType<AudioEffects>();
         player = FindObjectOfType<MusicPlayer>();
+    }
+    void Start()
+    {
+        hintPanel.SetActive(false);
         gameOver.SetActive(false);
-      //  menu.SetActive(false);
+        menu.SetActive(false);
         gamePlay.SetActive(true);
         showGameOver = false;
+        IsMenuOpen = false;
     }
 
     void Update()
@@ -61,19 +68,18 @@ public class CanvasManagerGame : CanvasManager
     public override void OpenMenu()
     {
         IsMenuOpen = !IsMenuOpen;
-
         menu.SetActive(IsMenuOpen);
+
+        if (audioSFX != null)
+        {
+            audioSFX.PlaySwipeSFX();
+        }
 
         if (!GameData.isGameOver)
         {
-            if (audioSFX != null)
-            {
-                audioSFX.PlaySwipeSFX();
-            }
-
-
             gamePlay.SetActive(!IsMenuOpen);
             imagePause.SetActive(true);
+
             if (IsMenuOpen)
             {
                 Time.timeScale = 0;
@@ -88,9 +94,80 @@ public class CanvasManagerGame : CanvasManager
 
         else 
         {
-            imagePause.SetActive(false); 
+            imagePause.SetActive(false);
+        }
+
+        if (isHintOpen)
+        {
+            isHintOpen = false;
+            hintPanel.SetActive(false);
+        }
+
+    }
+
+    public override void AudioSettings()
+    {
+        if (audioSFX != null)
+        {
+            audioSFX.PlayClickSFX();
+        }
+        IsAudioMute = !IsAudioMute;
+        audioSFX.MuteAudioCheck(IsAudioMute);
+
+    }
+
+    public void ShowHint()
+    {
+        isHintOpen = !isHintOpen;
+
+        if (audioSFX != null)
+        {
+            audioSFX.PlayClickSFX();
+        }
+
+        if (!GameData.isGameOver)
+        {
+            imagePause.SetActive(!isHintOpen);
+        }
+        else        
+        {
+            if (IsMenuOpen)  
+            {
+                gameOver.SetActive(!isHintOpen);
+            }
+            else
+            {
+                gameOver.SetActive(true);
+            }           
+        }
+
+        hintPanel.SetActive(isHintOpen);
+
+        if (isHintOpen)
+        {
+            uIController.ShowNextHint();
         }
     }
+
+    public void NextHint()
+    {
+        uIController.ShowNextHint();
+    }
+    public void CloseHints()
+    {
+        isHintOpen = false;
+        hintPanel.SetActive(false);
+
+        if (!GameData.isGameOver)
+        {
+            imagePause.SetActive(true);
+        }
+        else
+        {           
+            gameOver.SetActive(true);
+        }
+    }
+
 
     public void OpenMenuInGameOver()
     {

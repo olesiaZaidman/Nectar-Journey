@@ -380,7 +380,7 @@ GameObject:
   - component: {fileID: 686160313}
   - component: {fileID: 686160314}
   m_Layer: 0
-  m_Name: SceneGameManager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -446,9 +446,6 @@ MonoBehaviour:
   button: {fileID: 2977158211086138428}
   image1: {fileID: 21300000, guid: ebf5ba74ff033a647a4ab9481a32745c, type: 3}
   image2: {fileID: 21300000, guid: f8dba90faed0bfa44bbf00b248d59497, type: 3}
-  onClickEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &703745559 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4607321089309617840, guid: 12a8e3928131cc04dafd1133115dc382, type: 3}
@@ -6095,6 +6092,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1285754489}
   - component: {fileID: 1285754488}
+  - component: {fileID: 1285754490}
   m_Layer: 0
   m_Name: GameData
   m_TagString: Untagged
@@ -6129,6 +6127,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1285754490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285754487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ac67eeff8a91e3479982eadabf68551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hints:
+  - 
+  - 
+  - 
+  - 
 --- !u!1 &1310346801
 GameObject:
   m_ObjectHideFlags: 0

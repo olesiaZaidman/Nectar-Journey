@@ -63,7 +63,7 @@ public class CanvasManagerStartMenu : CanvasManager
         menu.SetActive(IsMenuOpen);
     }
 
-    public void AudioSettings()
+    public override void AudioSettings()
     {
         if (audioSFX != null)
         {

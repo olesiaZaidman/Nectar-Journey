@@ -12,10 +12,13 @@ public class PlayerHealth : MonoBehaviour
     bool isEnergized = false;
     UIController uIController;
     AudioEffects audioSFX;
+
+    PlayerController playerController;
     private void Awake()
     {
         uIController = FindObjectOfType<UIController>();
-        audioSFX = FindObjectOfType<AudioEffects>();    
+        audioSFX = FindObjectOfType<AudioEffects>();
+        playerController = GetComponent<PlayerController>();    
     }
 
     void OnParticleCollision(GameObject other)  //OnParticleTrigger
@@ -26,6 +29,8 @@ public class PlayerHealth : MonoBehaviour
             // Reduce player's health
             HurtPlayer();
         }
+
+        
     }
 
     public void HurtPlayer()
@@ -53,6 +58,12 @@ public class PlayerHealth : MonoBehaviour
         {
             print("Triggered by a hazard!");
             HurtPlayer();
+        }
+
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            // Reduce player's health
+            playerController.BoostUp(2);
         }
     }
 
