@@ -9279,11 +9279,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicTracks:
+  - {fileID: 8300000, guid: 4e586cf161168a94db454ba2676bdb6a, type: 3}
+  - {fileID: 8300000, guid: 69d69da6b97f6de45a352260d63b04d5, type: 3}
   - {fileID: 8300000, guid: 828e4ba1421185f48bb759392999d41d, type: 3}
   - {fileID: 8300000, guid: 160aa896408ca3646ae22fe30ddd4b53, type: 3}
   - {fileID: 8300000, guid: 1b93a96d8cb480b40b77730e0a4b93a6, type: 3}
-  - {fileID: 8300000, guid: 4e586cf161168a94db454ba2676bdb6a, type: 3}
-  - {fileID: 8300000, guid: 69d69da6b97f6de45a352260d63b04d5, type: 3}
   - {fileID: 8300000, guid: adeffcf5fd543bb4a991e8d0c56fea73, type: 3}
 --- !u!114 &1608211352
 MonoBehaviour:
