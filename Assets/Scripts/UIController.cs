@@ -13,6 +13,7 @@ public class UIController : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI scoreFinalText;
 
+    [SerializeField] TextMeshProUGUI hintNumber;
     [SerializeField] TextMeshProUGUI hintHeaderText;
     [SerializeField] TextMeshProUGUI hintText;
     Hints hintsManager;
@@ -26,6 +27,7 @@ public class UIController : MonoBehaviour
     {
         SetProgressBar();
         scoreFinalText.SetText(GameData.Score.ToString());
+        SetUpHint();
     }
     void SetProgressBar()
     {
@@ -44,9 +46,22 @@ public class UIController : MonoBehaviour
         scoreFinalText.SetText(GameData.Score.ToString());
     }
 
+    void SetUpHint()
+    {
+       int i = hintsManager.GetCurrentIndex() + 1;
+     hintNumber.SetText(i.ToString());
+        hintHeaderText.SetText(hintsManager.GetCurrentHintHeader());
+        hintText.SetText(hintsManager.GetCurrentHint());
+    }
     public void ShowNextHint()
     {
-        hintHeaderText.SetText(hintsManager.ShowNextHintHeader());
-        hintText.SetText(hintsManager.ShowNextHint());
+        hintsManager.PromoteIndexArray();
+        SetUpHint();
+    }
+
+    public void ShowPreviousHint()
+    {
+        hintsManager.DemoteIndexArray();
+        SetUpHint();
     }
 }

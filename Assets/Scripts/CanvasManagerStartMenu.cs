@@ -17,12 +17,7 @@ public class CanvasManagerStartMenu : CanvasManager
         get { return isMenuOpen; }
         set { isMenuOpen = value; }
     }
-    bool isAudioMute = false;
-    protected override bool IsAudioMute
-    {
-        get { return isAudioMute; }
-        set { isAudioMute = value; }
-    }
+  
 
     void Awake()
     {
@@ -70,9 +65,7 @@ public class CanvasManagerStartMenu : CanvasManager
             audioSFX.PlayClickSFX();
         }
 
-        IsAudioMute = !IsAudioMute;
-
-        audioSFX.MuteAudioCheck(IsAudioMute);
+        audioSFX.MuteAudioCheck();
 
     }
 

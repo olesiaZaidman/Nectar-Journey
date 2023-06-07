@@ -1,17 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Search;
 using UnityEngine;
 
 public class Hints : MonoBehaviour
 {
-    //  int currentHintIndex = 0;
-    string currentHintHeader;
-    [SerializeReference] string[] hintsHeaders = new string[4];
 
-    string currentHint;
-    [SerializeReference] string[] hints = new string[4];
+    const int ARRAY_SIZE = 4;
 
+    [SerializeReference] string[] hintsHeaders = new string[ARRAY_SIZE];
+
+    [SerializeReference] string[] hints = new string[ARRAY_SIZE];
+
+    int currentHintIndex = 0;
 
     void Start()
     {
@@ -34,50 +34,71 @@ public class Hints : MonoBehaviour
         hints[3] = "- Guide the butterfly to collect nectar from the flowers. ";
     }
 
-    public string ShowNextHintHeader()
+    public string GetCurrentHintHeader()
     {
-        return GetHintString(hintsHeaders, currentHintHeader);
+        return hintsHeaders[currentHintIndex];
     }
 
-    public string ShowNextHint()
+    public string GetCurrentHint()
     {
-        return GetHintString(hints, currentHint);
+        return hints[currentHintIndex];
     }
-    string GetHintString(string[] _array, string _currentText)
+
+    public int GetCurrentIndex()
     {
-        int currentHintIndex = 0;
+        return currentHintIndex;
+    }
 
-        if (_array.Length == 0)
+    public void PromoteIndexArray()
+    {
+        if (currentHintIndex < ARRAY_SIZE - 1)
         {
-            return "- No hints available."; // Return a message indicating that there are no hints
-        }
-
-        if (currentHintIndex < _array.Length)
-        {
-            if (_array[currentHintIndex] != null)
-            {
-                _currentText = _array[currentHintIndex];
-                // Display the current hint to the player
-                // You can use a UI element or print it to the console
-                // For example:
-                Debug.Log(_currentText);
-                currentHintIndex++;
-                return _currentText;
-            }
-            else
-            {
-                return "- No hints available.";
-            }
-
+            currentHintIndex++;           
         }
         else
         {
-            string empty = "- We don't have any more hints.";
-            return empty; // string.Empty; 
+            currentHintIndex = 0;
         }
-
     }
 
+    public void DemoteIndexArray()
+    {
+        if (currentHintIndex > 0)
+        {
+            currentHintIndex--;
+        }
+        else
+        {
+            currentHintIndex = ARRAY_SIZE - 1;
+        }
+    }
+    //string GetHintString(string[] _array, string _currentText)
+    //{
+    //    int currentHintIndex = 0;
 
+    //    if (currentHintIndex < _array.Length)
+    //    {
+    //        if (_array[currentHintIndex] != null)
+    //        {
+    //            _currentText = _array[currentHintIndex];
+    //            // Display the current hint to the player
+    //            // You can use a UI element or print it to the console
+    //            // For example:
+    //            Debug.Log(_currentText);
+    //            currentHintIndex++;
+    //            return _currentText;
+    //        }
+    //        else
+    //        {
+    //            return "- No hints available.";
+    //        }
 
+    //    }
+    //    else
+    //    {
+    //        string empty = "- We don't have any more hints.";
+    //        currentHintIndex = 0;
+    //        return empty; // string.Empty; 
+    //    }
+    //}
 }

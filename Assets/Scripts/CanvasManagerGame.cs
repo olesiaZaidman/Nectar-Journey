@@ -23,12 +23,6 @@ public class CanvasManagerGame : CanvasManager
         get { return isMenuOpen; }
         set { isMenuOpen = value; }
     }
-    bool isAudioMute = false;
-    protected override bool IsAudioMute
-    {
-        get { return isAudioMute; }
-        set { isAudioMute = value; }
-    }
 
     private void Awake()
     {
@@ -111,8 +105,7 @@ public class CanvasManagerGame : CanvasManager
         {
             audioSFX.PlayClickSFX();
         }
-        IsAudioMute = !IsAudioMute;
-        audioSFX.MuteAudioCheck(IsAudioMute);
+        audioSFX.MuteAudioCheck();
 
     }
 
@@ -143,15 +136,20 @@ public class CanvasManagerGame : CanvasManager
 
         hintPanel.SetActive(isHintOpen);
 
-        if (isHintOpen)
-        {
-            uIController.ShowNextHint();
-        }
+        //if (isHintOpen)
+        //{
+        //    uIController.ShowNextHint();
+        //}
     }
 
     public void NextHint()
     {
         uIController.ShowNextHint();
+    }
+
+    public void PreviousHint()
+    {
+        uIController.ShowPreviousHint();
     }
     public void CloseHints()
     {

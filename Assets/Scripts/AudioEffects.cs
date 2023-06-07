@@ -23,19 +23,21 @@ public class AudioEffects : MonoBehaviour
   //  [SerializeField][Range(0f, 1f)] float gameFxVolume;
 
    public static float gameVolume = 0.8f;
-
-    public void MuteAudioCheck(bool _isMute)
+   public static bool isMute = false;
+    public void MuteAudioCheck()
     {
-        if (_isMute)
-        { gameVolume = 0f; }
-        else gameVolume = 0.8f;
+        isMute = !isMute;
+        if (isMute)
+        {
+            gameVolume = 0f;
+        }
+        else
+        {
+            gameVolume = 0.8f;
+        }
 
+        Debug.Log("isMute: "+ isMute);
     }
-
-    //public void UnmuteAudio(float _volume)
-    //{
-    //    gameVolume = _volume;
-    //}
 
 
     void Awake()
