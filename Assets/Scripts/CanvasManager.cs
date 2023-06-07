@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-public class CanvasManager : MonoBehaviour
+public abstract  class CanvasManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public abstract void OpenMenu();
+    protected abstract bool IsMenuOpen { get; set; }
+    protected abstract bool IsAudioMute{ get; set; }
+    public AudioEffects audioSFX;
+    public GameObject menu;
+
     void Start()
     {
-        
+        audioSFX = FindObjectOfType<AudioEffects>();
+        menu.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

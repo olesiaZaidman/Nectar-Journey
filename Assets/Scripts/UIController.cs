@@ -8,6 +8,7 @@ public class UIController : MonoBehaviour
 {
     [SerializeField] Slider progressBar;
     [SerializeField] Image fill;
+
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI scoreFinalText;
     void Start()

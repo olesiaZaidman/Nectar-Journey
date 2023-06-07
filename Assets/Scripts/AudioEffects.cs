@@ -14,20 +14,34 @@ public class AudioEffects : MonoBehaviour
     [SerializeField] AudioClip swipe;
     [SerializeField] AudioClip tap;
     [SerializeField] AudioClip sceneLoaded;
-    [SerializeField][Range(0f, 1f)] float uiVolume;
+  //  [SerializeField][Range(0f, 1f)] float uiVolume;
 
     [Header("Game")]
     [SerializeField] AudioClip dieSFX;
     [SerializeField] AudioClip nectarCollectSFX;
     [SerializeField] AudioClip finishSFX;
-    [SerializeField][Range(0f, 1f)] float gameFxVolume;
+  //  [SerializeField][Range(0f, 1f)] float gameFxVolume;
 
-  //  AudioSource audioSource;
+   public static float gameVolume = 0.8f;
+
+    public void MuteAudioCheck(bool _isMute)
+    {
+        if (_isMute)
+        { gameVolume = 0f; }
+        else gameVolume = 0.8f;
+
+    }
+
+    //public void UnmuteAudio(float _volume)
+    //{
+    //    gameVolume = _volume;
+    //}
+
 
     void Awake()
     {
         ManageSingleton();
-      //  audioSource = GetComponent<AudioSource>();  
+        gameVolume = 0.8f;
     }
 
     void ManageSingleton()
@@ -49,38 +63,38 @@ public class AudioEffects : MonoBehaviour
 
     public void PlayClickSFX()
     {
-        PlaySFXClip(click, uiVolume);
+        PlaySFXClip(click, gameVolume);
     }
 
     public void PlayTapSFX()
     {
-        PlaySFXClip(tap, uiVolume);
+        PlaySFXClip(tap, gameVolume);
     }
 
     public void PlaySwipeSFX()
     {
-        PlaySFXClip(swipe, uiVolume);
+        PlaySFXClip(swipe, gameVolume);
     }
     public void PlaySceneLoadedSFX()
     {
-        PlaySFXClip(sceneLoaded, uiVolume);
+        PlaySFXClip(sceneLoaded, gameVolume);
     }
     #endregion
 
     #region Game
     public void PlayDieSFX()
     {
-        PlaySFXClip(dieSFX, gameFxVolume);
+        PlaySFXClip(dieSFX, gameVolume);
     }
 
     public void PlayFinishSFX()
     {
-        PlaySFXClip(finishSFX, gameFxVolume);
+        PlaySFXClip(finishSFX, gameVolume);
     }
 
     public void PlayNectarCollectionSFX()
     {
-        PlaySFXClip(nectarCollectSFX, gameFxVolume);
+        PlaySFXClip(nectarCollectSFX, gameVolume);
     }
 
     #endregion

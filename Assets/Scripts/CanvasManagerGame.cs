@@ -3,23 +3,38 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class CanvasManagerGame : MonoBehaviour
+public class CanvasManagerGame : CanvasManager
 {
     [SerializeField] GameObject gameOver;
     [SerializeField] GameObject gamePlay;
-    [SerializeField] GameObject menu;
+   // [SerializeField] GameObject menu;
+
+    [SerializeField] GameObject imagePause;
     bool showGameOver = false;
-    AudioEffects audioSFX;
+   
     MusicPlayer player;
 
     bool isMenuOpen = false;
+    protected override bool IsMenuOpen
+    {
+        get { return isMenuOpen; }
+        set { isMenuOpen = value; }
+    }
+    bool isAudioMute = false;
+    protected override bool IsAudioMute
+    {
+        get { return isAudioMute; }
+        set { isAudioMute = value; }
+    }
+
+    //  AudioEffects audioSFX;
 
     void Start()
     {
         audioSFX = FindObjectOfType<AudioEffects>();
         player = FindObjectOfType<MusicPlayer>();
         gameOver.SetActive(false);
-        menu.SetActive(false);
+      //  menu.SetActive(false);
         gamePlay.SetActive(true);
         showGameOver = false;
     }
@@ -43,23 +58,23 @@ public class CanvasManagerGame : MonoBehaviour
 
 
 
-    public void OpenMenu()
+    public override void OpenMenu()
     {
+        IsMenuOpen = !IsMenuOpen;
 
-        if (audioSFX != null)
-        {
-            audioSFX.PlayClickSFX();
-        }
-
-        isMenuOpen = !isMenuOpen;
-
-        menu.SetActive(isMenuOpen);
+        menu.SetActive(IsMenuOpen);
 
         if (!GameData.isGameOver)
         {
-            gamePlay.SetActive(!isMenuOpen);
+            if (audioSFX != null)
+            {
+                audioSFX.PlaySwipeSFX();
+            }
 
-            if (isMenuOpen)
+
+            gamePlay.SetActive(!IsMenuOpen);
+            imagePause.SetActive(true);
+            if (IsMenuOpen)
             {
                 Time.timeScale = 0;
                 GameData.isGameFreeze = true;
@@ -71,14 +86,10 @@ public class CanvasManagerGame : MonoBehaviour
             }
         }
 
-
-
-
-
-        //if (GameData.isGameOver)
-        //{
-        //    gameOver.SetActive(false);
-        //}
+        else 
+        {
+            imagePause.SetActive(false); 
+        }
     }
 
     public void OpenMenuInGameOver()

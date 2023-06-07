@@ -9,7 +9,8 @@ public class GameData : MonoBehaviour
     const int playerMaxHP = 100;
     static int score;
 
-    public static bool isGameOver;
+    public static bool isGameOver = false;
+    public static bool isAudioOn = true;
     public static bool isGameFreeze = false;
     public static int PlayerHP { get { return playerHP; } }
     public static int Score { get { return score; } }
@@ -26,10 +27,12 @@ public class GameData : MonoBehaviour
     {
         ManageSingleton();
         playerHP = 100;
-        isGameOver = false;
         score = 0;
-        //Time.timeScale = 1;
 
+        isGameOver = false;
+        isAudioOn = true;
+        isGameFreeze = false;
+        //Time.timeScale = 1;
     }
 
     void ManageSingleton()

@@ -42,14 +42,20 @@ public class SceneLoadManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void LoadStartMenuGame()
+
+    public void LoadScene(int _sceneNumber)
     {
+        float _delay = 0.3f;
+        Debug.Log("Clicked");
+        if (Time.timeScale == 0)
+        { Time.timeScale = 1; }
 
         if (audioSFX != null)
         {
             audioSFX.PlayClickSFX();
         }
-        StartCoroutine(WaitAndLoad(1f, 0));
+        StartCoroutine(WaitAndLoad(_delay, _sceneNumber));
+
     }
 
     public void LoadGame()
