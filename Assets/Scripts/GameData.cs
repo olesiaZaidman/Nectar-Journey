@@ -16,7 +16,7 @@ public class GameData : MonoBehaviour
     public static int Score { get { return score; } }
     public static int PlayerMaxHP { get { return playerMaxHP; } }
 
-    //  public static bool isGameStarted = false;
+
 
     static GameData instance;
 
@@ -26,6 +26,7 @@ public class GameData : MonoBehaviour
     void Awake()
     {
         ManageSingleton();
+       
         playerHP = 100;
         score = 0;
 
@@ -53,7 +54,7 @@ public class GameData : MonoBehaviour
     {
         if (playerHP <= 0)
         { 
-            isGameOver = true; 
+            isGameOver = true;
         }
         //if (isGameOver)
         //{ Time.timeScale = 0; }

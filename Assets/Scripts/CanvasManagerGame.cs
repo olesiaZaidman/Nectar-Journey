@@ -115,7 +115,7 @@ public class CanvasManagerGame : CanvasManager
 
         if (audioSFX != null)
         {
-            audioSFX.PlayClickSFX();
+            audioSFX.PlaySwipeSFX();
         }
 
         if (!GameData.isGameOver)
@@ -144,15 +144,27 @@ public class CanvasManagerGame : CanvasManager
 
     public void NextHint()
     {
+        if (audioSFX != null)
+        {
+            audioSFX.PlayClickSFX();
+        }
         uIController.ShowNextHint();
     }
 
     public void PreviousHint()
     {
+        if (audioSFX != null)
+        {
+            audioSFX.PlayClickSFX();
+        }
         uIController.ShowPreviousHint();
     }
     public void CloseHints()
     {
+        if (audioSFX != null)
+        {
+            audioSFX.PlayClickSFX();
+        }
         isHintOpen = false;
         hintPanel.SetActive(false);
 

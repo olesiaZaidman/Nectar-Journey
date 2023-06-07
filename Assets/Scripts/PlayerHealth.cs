@@ -10,15 +10,27 @@ public class PlayerHealth : MonoBehaviour
 
     public UnityEvent increaseHealthBar;
     bool isEnergized = false;
+    float groundPushMod = 1.5f;
+
+    bool isDead = false;
     UIController uIController;
     AudioEffects audioSFX;
 
     PlayerController playerController;
-    private void Awake()
+     void Awake()
     {
         uIController = FindObjectOfType<UIController>();
         audioSFX = FindObjectOfType<AudioEffects>();
         playerController = GetComponent<PlayerController>();    
+    }
+
+     void Update()
+    {
+        if (GameData.isGameOver && !isDead)
+        {
+            isDead = true;
+            HurtPlayer();
+        }
     }
 
     void OnParticleCollision(GameObject other)  //OnParticleTrigger
@@ -27,25 +39,23 @@ public class PlayerHealth : MonoBehaviour
         if (other.gameObject.CompareTag("Hazard"))
         {
             // Reduce player's health
-            HurtPlayer();
-        }
-
-        
+            GameData.isGameOver = true;
+           // HurtPlayer();
+        }       
     }
 
     public void HurtPlayer()
     {
-        Debug.Log("Ouch!Hazard particles");
-        if (dieFX != null && !GameData.isGameOver)
-        {
-            GameData.isGameOver = true;
+       // Debug.Log("Ouch!Hazard particles");
+        if (dieFX != null)
+        {        
             if (audioSFX != null)
             {
                 audioSFX.PlayDieSFX();
             }
 
             dieFX.Play();
-            Destroy(gameObject, 0.5f);
+            Destroy(gameObject, 0.3f);
         }
     }
 
@@ -56,14 +66,16 @@ public class PlayerHealth : MonoBehaviour
         //Hazard
         if (other.collider.gameObject.CompareTag("Hazard") && !GameData.isGameOver)
         {
-            print("Triggered by a hazard!");
-            HurtPlayer();
+        //    print("Triggered by a hazard!");
+            GameData.isGameOver = true;
+          //  HurtPlayer();
         }
 
         if (other.gameObject.CompareTag("Ground"))
         {
             // Reduce player's health
-            playerController.BoostUp(2);
+            
+            playerController.BoostUp(groundPushMod);
         }
     }
 
@@ -78,7 +90,7 @@ public class PlayerHealth : MonoBehaviour
     }
     public void RecoverPlayerEnergy()
     {
-        Debug.Log("We have more energy!");
+     //   Debug.Log("We have more energy!");
         if (nectarFX != null && !isEnergized)
         {
             if (audioSFX != null)
