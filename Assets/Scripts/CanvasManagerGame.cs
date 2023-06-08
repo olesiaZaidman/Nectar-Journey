@@ -44,7 +44,7 @@ public class CanvasManagerGame : CanvasManager
     {
         if (GameData.isGameOver && !showGameOver)
         {
-            player.StopMusic();
+            player.StopMusic(); /*Maybe we should not stop it?*/
 
             if (audioSFX != null)
             {

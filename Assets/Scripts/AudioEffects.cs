@@ -23,7 +23,9 @@ public class AudioEffects : MonoBehaviour
   //  [SerializeField][Range(0f, 1f)] float gameFxVolume;
 
    public static float gameVolume = 0.8f;
-   public static bool isMute = false;
+
+    float volumeSFXmodifier = 0.2f;
+    public static bool isMute = false;
     public void MuteAudioCheck()
     {
         isMute = !isMute;
@@ -44,6 +46,7 @@ public class AudioEffects : MonoBehaviour
     {
         ManageSingleton();
         gameVolume = 0.8f;
+
     }
 
     void ManageSingleton()
@@ -96,7 +99,7 @@ public class AudioEffects : MonoBehaviour
 
     public void PlayNectarCollectionSFX()
     {
-        PlaySFXClip(nectarCollectSFX, gameVolume);
+        PlaySFXClip(nectarCollectSFX, gameVolume- volumeSFXmodifier);
     }
 
     #endregion
