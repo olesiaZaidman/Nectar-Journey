@@ -49,7 +49,7 @@ public class SceneLoadManager : MonoBehaviour
 
     public void LoadScene(int _sceneNumber)
     {
-        float _delay = 0.3f;
+        float _delay = 0.15f;
         Debug.Log("Clicked");
         if (Time.timeScale == 0)
         { Time.timeScale = 1; }

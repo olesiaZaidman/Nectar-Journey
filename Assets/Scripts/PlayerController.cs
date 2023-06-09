@@ -35,12 +35,12 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space)) //0 is left click
         {
-            BoostUp(1);
+            BoostUp(1f);
 
             if (!spentEnergy)
             {
                 spentEnergy = true;
-                GameData.DecreasePlayerHP(2);
+                GameData.DecreasePlayerHP(3);
                 decreaseHealthBar.Invoke();
                 StartCoroutine(FlyCooldown());
             }

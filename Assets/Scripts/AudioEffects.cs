@@ -68,38 +68,38 @@ public class AudioEffects : MonoBehaviour
 
     public void PlayClickSFX()
     {
-        PlaySFXClip(click, gameVolume);
+        PlaySFXClip(click, gameVolume - volumeSFXmodifier);
     }
 
     public void PlayTapSFX()
     {
-        PlaySFXClip(tap, gameVolume);
+        PlaySFXClip(tap, gameVolume - volumeSFXmodifier);
     }
 
     public void PlaySwipeSFX()
     {
-        PlaySFXClip(swipe, gameVolume);
+        PlaySFXClip(swipe, gameVolume - (volumeSFXmodifier * 2));
     }
     public void PlaySceneLoadedSFX()
     {
-        PlaySFXClip(sceneLoaded, gameVolume);
+        PlaySFXClip(sceneLoaded, gameVolume - volumeSFXmodifier);
     }
     #endregion
 
     #region Game
     public void PlayDieSFX()
     {
-        PlaySFXClip(dieSFX, gameVolume);
+        PlaySFXClip(dieSFX, gameVolume - volumeSFXmodifier);
     }
 
     public void PlayFinishSFX()
     {
-        PlaySFXClip(finishSFX, gameVolume);
+        PlaySFXClip(finishSFX, gameVolume - volumeSFXmodifier);
     }
 
     public void PlayNectarCollectionSFX()
     {
-        PlaySFXClip(nectarCollectSFX, gameVolume- volumeSFXmodifier);
+        PlaySFXClip(nectarCollectSFX, gameVolume- (volumeSFXmodifier*2));
     }
 
     #endregion

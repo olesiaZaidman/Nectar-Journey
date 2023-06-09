@@ -8,8 +8,8 @@ public class LevelPrefabManager : MonoBehaviour
     public const int amountPrefabs = 10;
 
     [Range(0f, 1f)]
-    public float difficulty = 0.5f;
-    float difficultyMax = 0.7f;
+    public float difficulty = 0.3f;
+    float difficultyMax = 0.8f;
 
     public GameObject[] levelFlowerPrefabs;
     public GameObject[] levelHazardPrefabs;
@@ -40,10 +40,10 @@ public class LevelPrefabManager : MonoBehaviour
 
     public void CreateNewPrefabsSet()
     {
-        if (counter % 2 == 0)
-        {
+       // if (counter % 2 == 0)
+       // {
             IncreaseDifficulty();
-        }
+      //  }
         levelPrefabs = AddRandomObjectsToList(difficulty);
         counter++;
     }
@@ -118,13 +118,13 @@ public class LevelPrefabManager : MonoBehaviour
 
 
 
-    GameObject[] CreatePrefabsLevelSet(GameObject[] _goodPrefabs, GameObject[] _badPrefabs, float _proportionDifficulty)
-    {
-        List<GameObject> prefabsList = new List<GameObject>();
-        float randomIndex = Random.Range(0.1f, _proportionDifficulty);
+    //GameObject[] CreatePrefabsLevelSet(GameObject[] _goodPrefabs, GameObject[] _badPrefabs, float _proportionDifficulty)
+    //{
+    //    List<GameObject> prefabsList = new List<GameObject>();
+    //    float randomIndex = Random.Range(0.1f, _proportionDifficulty);
 
-        return prefabsList.ToArray();
-    }
+    //    return prefabsList.ToArray();
+    //}
 
 
     //GameObject[] CreatePrefabsLevelSet(GameObject[] _goodPrefabs, GameObject[] _badPrefabs, float _proportionDifficulty)
@@ -144,46 +144,46 @@ public class LevelPrefabManager : MonoBehaviour
     //    return levelSet;
     //}
 
-    GameObject[] ChoosePrefabs(GameObject[] _prefabCollection, int _amount)
-    {
-        GameObject[] collection = new GameObject[_amount];
+    //GameObject[] ChoosePrefabs(GameObject[] _prefabCollection, int _amount)
+    //{
+    //    GameObject[] collection = new GameObject[_amount];
 
-        for (int i = 0; i < collection.Length; i++)
-        {
-            int index = Random.Range(0, _prefabCollection.Length);
-            collection[i] = _prefabCollection[index];
-        }
+    //    for (int i = 0; i < collection.Length; i++)
+    //    {
+    //        int index = Random.Range(0, _prefabCollection.Length);
+    //        collection[i] = _prefabCollection[index];
+    //    }
 
-        return collection;
-    }
+    //    return collection;
+    //}
 
-    GameObject[] MergeArrays(GameObject[] _array1, GameObject[] _array2)
-    {
-        // int length = _array1.Length + _array2.Length;
+    //GameObject[] MergeArrays(GameObject[] _array1, GameObject[] _array2)
+    //{
+    //    // int length = _array1.Length + _array2.Length;
 
-        // GameObject[] mergedArray = new GameObject[length];
-        GameObject[] mergedArray = new GameObject[amountPrefabs];
+    //    // GameObject[] mergedArray = new GameObject[length];
+    //    GameObject[] mergedArray = new GameObject[amountPrefabs];
 
-        int index1 = 0;
-        int index2 = 0;
+    //    int index1 = 0;
+    //    int index2 = 0;
 
-        // for (int i = 0; i < length; i++)
-        for (int i = 0; i < amountPrefabs; i++)
-        {
-            // Mix between _array1 and _array2
-            if (i % 2 == 0 && index1 < _array1.Length)
-            {
-                mergedArray[i] = _array1[index1];
-                index1++;
-            }
-            else if (index2 < _array2.Length)
-            {
-                mergedArray[i] = _array2[index2];
-                index2++;
-            }
-        }
-        return mergedArray;
-    }
+    //    // for (int i = 0; i < length; i++)
+    //    for (int i = 0; i < amountPrefabs; i++)
+    //    {
+    //        // Mix between _array1 and _array2
+    //        if (i % 2 == 0 && index1 < _array1.Length)
+    //        {
+    //            mergedArray[i] = _array1[index1];
+    //            index1++;
+    //        }
+    //        else if (index2 < _array2.Length)
+    //        {
+    //            mergedArray[i] = _array2[index2];
+    //            index2++;
+    //        }
+    //    }
+    //    return mergedArray;
+    //}
 
 
 }

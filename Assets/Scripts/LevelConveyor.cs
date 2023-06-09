@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class LevelConveyor : MonoBehaviour
 {
-    float speed = 0.006f; //0.003f; try 0.015 for i up test
+    float speed = 0.035f; //0.003f; try 0.015 for i up test
     void Start()
     {
         
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (!GameData.isGameFreeze)
         { transform.Translate(new Vector3(0, 0, 1 * speed)); }

@@ -47,7 +47,7 @@ public class SwipeTouch : MonoBehaviour
             if (endTouchPos.y > startTouchPos.y)
             {
                 Debug.Log("Open Menu ");
-               // ActivatePanel();
+             // ActivatePanel();
             }
 
             if (endTouchPos.y < startTouchPos.y)
