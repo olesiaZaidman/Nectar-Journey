@@ -8,10 +8,14 @@ public class SceneLoadManager : MonoBehaviour
 {
     int currentSceneIndex;
     AudioEffects audioSFX;
+
+    [SerializeField] GameObject uiParticles;
+
     void Awake()
     {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         audioSFX = FindObjectOfType<AudioEffects>();
+      //  uiParticles.SetActive(false);
     }
 
     void Update()
@@ -49,6 +53,9 @@ public class SceneLoadManager : MonoBehaviour
         Debug.Log("Clicked");
         if (Time.timeScale == 0)
         { Time.timeScale = 1; }
+
+        //if (uiParticles !=null)
+        //{ uiParticles.SetActive(false); }
 
         if (audioSFX != null)
         {
