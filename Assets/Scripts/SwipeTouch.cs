@@ -13,9 +13,9 @@ public class SwipeTouch : MonoBehaviour
 
     private Touch theTouch;
 
-    private string direction;
+  //  private string direction;
 
-    [SerializeField] TextMeshProUGUI swipeDebug;
+ //   [SerializeField] TextMeshProUGUI swipeDebug;
     AudioEffects audioSFX;
 
     int pixelTapMax = 30;
@@ -69,7 +69,7 @@ public class SwipeTouch : MonoBehaviour
 
                 if (Mathf.Abs(x) < pixelTapMax && Mathf.Abs(y) < pixelTapMax)
                 {
-                    direction = "Tapped";
+                  //  direction = "Tapped";
                 }
 
                 else if (Mathf.Abs(x) > Mathf.Abs(y))
@@ -78,7 +78,7 @@ public class SwipeTouch : MonoBehaviour
 
                     if (x > 0)
                     {
-                        direction = "Right";
+                     //   direction = "Right";
                         if (audioSFX != null && !CanvasManagerStartMenu.isCreditsOpen)
                         {
                             audioSFX.PlaySwipeSFX();
@@ -90,7 +90,7 @@ public class SwipeTouch : MonoBehaviour
                     }
                     else if (x < 0)
                     {
-                        direction = "Left";
+                      //  direction = "Left";
                         if (audioSFX != null && CanvasManagerStartMenu.isCreditsOpen)
                         {
                             audioSFX.PlaySwipeSFX();
@@ -109,7 +109,7 @@ public class SwipeTouch : MonoBehaviour
 
                     if (y > 0)
                     {
-                        direction = "Up";
+                    //    direction = "Up";
                         if (audioSFX != null && !CanvasManagerStartMenu.isMenuOpen)
                         {
                             audioSFX.PlaySwipeSFX();
@@ -126,7 +126,7 @@ public class SwipeTouch : MonoBehaviour
                             audioSFX.PlaySwipeSFX();
                         }
                         CanvasManagerStartMenu.isMenuOpen = false;
-                        direction = "Down";
+                      //  direction = "Down";
                         DeactivatePanel(menuPanel);
 
                     }
@@ -135,7 +135,7 @@ public class SwipeTouch : MonoBehaviour
         }
 
      //   Debug.Log(direction);
-        swipeDebug.SetText(direction);
+      //  swipeDebug.SetText(direction);
     }
 
  
