@@ -16,11 +16,18 @@ public class UIController : MonoBehaviour
     [SerializeField] TextMeshProUGUI hintNumber;
     [SerializeField] TextMeshProUGUI hintHeaderText;
     [SerializeField] TextMeshProUGUI hintText;
+
+    [SerializeField] GameObject sliderFX;
     Hints hintsManager;
+
+    Color originalYellowcolor = new Color(1, 0.90463f, 0.5226415f, 1); //FFE785
+    Color redcolor = new Color(1, 0.410962f, 0.3150943f, 1); //FF6950
 
     void Awake()
     {
         hintsManager = FindObjectOfType<Hints>();
+        sliderFX.SetActive(false);
+        fill.color = originalYellowcolor;   
     }
 
     void Start()
@@ -38,6 +45,15 @@ public class UIController : MonoBehaviour
    public void UpdateProgressBar()
     {
         progressBar.value = GameData.PlayerHP;
+
+       if(progressBar.value < GameData.PlayerMaxHP*0.5f)
+        {
+            fill.color = redcolor;
+        }
+        else
+        {
+            fill.color = originalYellowcolor;
+        }
     }
 
     public void UpdateScore()
@@ -64,4 +80,5 @@ public class UIController : MonoBehaviour
         hintsManager.DemoteIndexArray();
         SetUpHint();
     }
+
 }

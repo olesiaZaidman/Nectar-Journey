@@ -15,7 +15,6 @@ public class SceneLoadManager : MonoBehaviour
     {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         audioSFX = FindObjectOfType<AudioEffects>();
-      //  uiParticles.SetActive(false);
     }
 
     void Update()
@@ -53,9 +52,6 @@ public class SceneLoadManager : MonoBehaviour
         Debug.Log("Clicked");
         if (Time.timeScale == 0)
         { Time.timeScale = 1; }
-
-        //if (uiParticles !=null)
-        //{ uiParticles.SetActive(false); }
 
         if (audioSFX != null)
         {

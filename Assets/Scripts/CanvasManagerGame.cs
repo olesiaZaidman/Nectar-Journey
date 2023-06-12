@@ -18,11 +18,11 @@ public class CanvasManagerGame : CanvasManager
     bool showGameOver = false;
     bool isMenuOpen = false;
     bool isHintOpen = false;
-    protected override bool IsMenuOpen
-    {
-        get { return isMenuOpen; }
-        set { isMenuOpen = value; }
-    }
+    //protected override bool IsMenuOpen
+    //{
+    //    get { return isMenuOpen; }
+    //    set { isMenuOpen = value; }
+    //}
 
     private void Awake()
     {
@@ -37,7 +37,7 @@ public class CanvasManagerGame : CanvasManager
         menu.SetActive(false);
         gamePlay.SetActive(true);
         showGameOver = false;
-        IsMenuOpen = false;
+        isMenuOpen = false;
     }
 
     void Update()
@@ -61,8 +61,8 @@ public class CanvasManagerGame : CanvasManager
 
     public override void OpenMenu()
     {
-        IsMenuOpen = !IsMenuOpen;
-        menu.SetActive(IsMenuOpen);
+        isMenuOpen = !isMenuOpen;
+        menu.SetActive(isMenuOpen);
 
         if (audioSFX != null)
         {
@@ -71,10 +71,10 @@ public class CanvasManagerGame : CanvasManager
 
         if (!GameData.isGameOver)
         {
-            gamePlay.SetActive(!IsMenuOpen);
+            gamePlay.SetActive(!isMenuOpen);
             imagePause.SetActive(true);
 
-            if (IsMenuOpen)
+            if (isMenuOpen)
             {
                 Time.timeScale = 0;
                 GameData.isGameFreeze = true;
@@ -124,7 +124,7 @@ public class CanvasManagerGame : CanvasManager
         }
         else        
         {
-            if (IsMenuOpen)  
+            if (isMenuOpen)  
             {
                 gameOver.SetActive(!isHintOpen);
             }

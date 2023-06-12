@@ -13,14 +13,10 @@ public class Spawner : MonoBehaviour
     float xPos =0f;
     float yPos = -3.5f;
     float zPos;
-     float prefabSpacing; // Spacing between each prefab
-     float startPositionZ = 17f; // Starting position on the Z-axis
+    float prefabSpacing; // Spacing between each prefab
+    float startPositionZ = 17f; // Starting position on the Z-axis
 
-    // int amountPrefabs;
-
-    // GameObject[] levelPrefabs;
-   // LevelPrefabManager levelPrefabManager;
-
+ 
     void Awake()
     { 
         parentTransform = GetComponent<Transform>();    

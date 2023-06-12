@@ -5,26 +5,28 @@ using UnityEngine;
 
 public class CanvasManagerStartMenu : CanvasManager
 {
-    bool isMenuOpen = false;
+   // bool isMenuOpen = false;
 
     [SerializeField] GameObject credits;
     [SerializeField] GameObject gamePlay;
     [SerializeField] GameObject startMenu;
 
     [SerializeField] ParticleSystem snowFX;
-    protected override bool IsMenuOpen
-    {
-        get { return isMenuOpen; }
-        set { isMenuOpen = value; }
-    }
-  
+    //protected override bool IsMenuOpen
+    //{
+    //    get { return isMenuOpen; }
+    //    set { isMenuOpen = value; }
+    //}
+
+    public static bool isCreditsOpen = false;
+    public static bool isMenuOpen = false;
 
     void Awake()
     {
         startMenu.SetActive(true);
         credits.SetActive(false);
         menu.SetActive(false);
-        IsMenuOpen = false;
+        isMenuOpen = false;
     }
 
     void Start()
@@ -35,9 +37,9 @@ public class CanvasManagerStartMenu : CanvasManager
 
     public override void OpenMenu()
     {
-        IsMenuOpen = !IsMenuOpen;
+        isMenuOpen = !isMenuOpen;
 
-        menu.SetActive(IsMenuOpen);
+        menu.SetActive(isMenuOpen);
 
         if (audioSFX != null)
         {
@@ -51,11 +53,15 @@ public class CanvasManagerStartMenu : CanvasManager
         {
             audioSFX.PlayClickSFX();
         }
-      //  snowFX.Stop();
-        credits.SetActive(true);
-        startMenu.SetActive(false);
-        IsMenuOpen = false;
-        menu.SetActive(IsMenuOpen);
+        //  snowFX.Stop();
+        if (!isCreditsOpen)
+        {
+            isCreditsOpen = true;
+            credits.SetActive(true);
+            startMenu.SetActive(false);
+            isMenuOpen = false;
+            menu.SetActive(isMenuOpen);
+        }
     }
 
     public override void AudioSettings()
@@ -76,8 +82,15 @@ public class CanvasManagerStartMenu : CanvasManager
         {
             audioSFX.PlayClickSFX();
         }
-        credits.SetActive(false);
-        startMenu.SetActive(true);
+        if (isCreditsOpen)
+        {
+            isCreditsOpen = false;
+            credits.SetActive(false);
+
+            startMenu.SetActive(true);
+        }
+
+
       //  snowFX.Play();
     }
 }
