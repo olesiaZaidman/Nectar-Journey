@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class CanvasManagerGame : CanvasManager
@@ -66,6 +65,7 @@ public class CanvasManagerGame : CanvasManager
 
         if (audioSFX != null)
         {
+          //  audioSFX.PlayPauseSFX();
             audioSFX.PlaySwipeSFX();
         }
 

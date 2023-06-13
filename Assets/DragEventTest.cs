@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
+
 
 
 public class DragEventTest : MonoBehaviour
@@ -15,15 +14,15 @@ public class DragEventTest : MonoBehaviour
     /// <summary>
     /// /(Click the Add Component button and go to Event>Physics Raycaster) so it can detect clicks on GameObjects.
     /// </summary>
-    [SerializeField] TextMeshProUGUI swipeDebug;
-   public string debugMessage;
+   // [SerializeField] TextMeshProUGUI swipeDebug;
+   //public string debugMessage;
 
 
-    public void DebugThis()
-    {
-        swipeDebug.SetText(debugMessage);
+   // public void DebugThis()
+   // {
+   //     swipeDebug.SetText(debugMessage);
 
-    }
+   // }
     //void Start()
     //{
     //    EventTrigger trigger = GetComponent<EventTrigger>();

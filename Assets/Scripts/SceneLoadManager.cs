@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-//using Input = UnityEngine.Input;
+using UnityEngine.Events;
 
 public class SceneLoadManager : MonoBehaviour
 {
+    public UnityEvent startGame;
     int currentSceneIndex;
     AudioEffects audioSFX;
 
@@ -61,6 +62,27 @@ public class SceneLoadManager : MonoBehaviour
 
     }
 
+
+    public void StartGame()
+    {
+        float _delay = 0.1f;
+        int _sceneId = 1;
+        Debug.Log("Clicked");
+
+        if (Time.timeScale == 0)
+        { Time.timeScale = 1; }
+
+        if (audioSFX != null)
+        {
+            audioSFX.PlayClickSFX();
+        }
+        startGame.Invoke();
+
+        
+      StartCoroutine(WaitAndLoad(_delay, _sceneId));
+
+    }    
+
     public void LoadGame()
     {
         if (audioSFX != null)
@@ -74,7 +96,8 @@ public class SceneLoadManager : MonoBehaviour
     IEnumerator WaitAndLoad(float _delay, int _index)
     {
         yield return new WaitForSeconds(_delay);
-        SceneManager.LoadScene(_index);
+        SceneManager.LoadSceneAsync(_index);
+      //  SceneManager.LoadScene(_index);
     }
 
 }

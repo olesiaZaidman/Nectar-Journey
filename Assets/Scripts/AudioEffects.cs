@@ -12,7 +12,7 @@ public class AudioEffects : MonoBehaviour
     [Header("UI")]
     [SerializeField] AudioClip click;
     [SerializeField] AudioClip swipe;
-    [SerializeField] AudioClip tap;
+    [SerializeField] AudioClip gamePause;
     [SerializeField] AudioClip sceneLoaded;
   //  [SerializeField][Range(0f, 1f)] float uiVolume;
 
@@ -71,9 +71,9 @@ public class AudioEffects : MonoBehaviour
         PlaySFXClip(click, gameVolume - volumeSFXmodifier);
     }
 
-    public void PlayTapSFX()
+    public void PlayPauseSFX()
     {
-        PlaySFXClip(tap, gameVolume - volumeSFXmodifier);
+        PlaySFXClip(gamePause, gameVolume - volumeSFXmodifier);
     }
 
     public void PlaySwipeSFX()

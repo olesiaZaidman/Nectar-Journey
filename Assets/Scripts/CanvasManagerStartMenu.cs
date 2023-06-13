@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class CanvasManagerStartMenu : CanvasManager
@@ -8,10 +7,15 @@ public class CanvasManagerStartMenu : CanvasManager
    // bool isMenuOpen = false;
 
     [SerializeField] GameObject credits;
-    [SerializeField] GameObject gamePlay;
+
     [SerializeField] GameObject startMenu;
 
     [SerializeField] ParticleSystem snowFX;
+
+    [SerializeField] GameObject loadingCanvas;
+    [SerializeField] GameObject flowers;
+    [SerializeField] GameObject gameMenuCanvas;
+    [SerializeField] GameObject uiFX;
     //protected override bool IsMenuOpen
     //{
     //    get { return isMenuOpen; }
@@ -21,8 +25,26 @@ public class CanvasManagerStartMenu : CanvasManager
     public static bool isCreditsOpen = false;
     public static bool isMenuOpen = false;
 
+
+   public void OpenLoadingCanvas()
+    {
+        loadingCanvas.SetActive(true);
+        gameMenuCanvas.SetActive(false);
+        flowers.SetActive(false);
+        uiFX.SetActive(false);
+    }
+
+    void OpenStartCanvas()
+    {
+        loadingCanvas.SetActive(false);
+        gameMenuCanvas.SetActive(true);
+        flowers.SetActive(true);
+        uiFX.SetActive(true);
+    }
+
     void Awake()
     {
+        OpenStartCanvas();
         startMenu.SetActive(true);
         credits.SetActive(false);
         menu.SetActive(false);
