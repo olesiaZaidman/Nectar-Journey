@@ -13,11 +13,13 @@ public class AudioEffects : MonoBehaviour
     [SerializeField] AudioClip click;
     [SerializeField] AudioClip swipe;
     [SerializeField] AudioClip gamePause;
-    [SerializeField] AudioClip sceneLoaded;
-  //  [SerializeField][Range(0f, 1f)] float uiVolume;
+    [SerializeField] AudioClip hintsOpen;
+    [SerializeField] AudioClip nextHintButtonClick;
+    //  [SerializeField][Range(0f, 1f)] float uiVolume;
 
     [Header("Game")]
     [SerializeField] AudioClip dieSFX;
+    [SerializeField] AudioClip groundTouchSFX;
     [SerializeField] AudioClip nectarCollectSFX;
     [SerializeField] AudioClip finishSFX;
   //  [SerializeField][Range(0f, 1f)] float gameFxVolume;
@@ -80,9 +82,14 @@ public class AudioEffects : MonoBehaviour
     {
         PlaySFXClip(swipe, gameVolume - (volumeSFXmodifier * 2));
     }
-    public void PlaySceneLoadedSFX()
+    public void PlayHintsOpenSFX()
     {
-        PlaySFXClip(sceneLoaded, gameVolume - volumeSFXmodifier);
+        PlaySFXClip(hintsOpen, gameVolume - (volumeSFXmodifier * 2));
+    }
+
+    public void PlayNextHintButtonClickSFX()
+    {
+        PlaySFXClip(nextHintButtonClick, gameVolume - (volumeSFXmodifier * 2));
     }
     #endregion
 
@@ -99,8 +106,15 @@ public class AudioEffects : MonoBehaviour
 
     public void PlayNectarCollectionSFX()
     {
-        PlaySFXClip(nectarCollectSFX, gameVolume- (volumeSFXmodifier*2));
+        PlaySFXClip(nectarCollectSFX, gameVolume- (volumeSFXmodifier*3));
     }
+
+    public void PlayGroundTouchSFX()
+    {
+        PlaySFXClip(groundTouchSFX, gameVolume - (volumeSFXmodifier * 2));
+    }
+
+    
 
     #endregion
 

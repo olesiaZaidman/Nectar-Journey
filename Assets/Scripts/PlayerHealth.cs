@@ -15,7 +15,7 @@ public class PlayerHealth : MonoBehaviour
     bool isDead = false;
     UIController uIController;
     AudioEffects audioSFX;
-
+    bool isPlayedSFX = false;
     PlayerController playerController;
      void Awake()
     {
@@ -39,7 +39,7 @@ public class PlayerHealth : MonoBehaviour
         if (other.gameObject.CompareTag("Hazard"))
         {
             // Reduce player's health
-            GameData.isGameOver = true;
+         //  !!! GameData.isGameOver = true;
            // HurtPlayer();
         }       
     }
@@ -67,14 +67,14 @@ public class PlayerHealth : MonoBehaviour
         if (other.collider.gameObject.CompareTag("Hazard") && !GameData.isGameOver)
         {
         //    print("Triggered by a hazard!");
-            GameData.isGameOver = true;
+           //!!! GameData.isGameOver = true;
           //  HurtPlayer();
         }
 
         if (other.gameObject.CompareTag("Ground"))
         {
-            // Reduce player's health
-            
+            // Reduce player's health?
+           
             playerController.BoostUp(groundPushMod);
         }
     }
@@ -87,6 +87,11 @@ public class PlayerHealth : MonoBehaviour
             GameData.IncreaseScore();
             uIController.UpdateScore();
         }
+
+        //if (other.gameObject.CompareTag("Grass") && !GameData.isGameOver)
+        //{
+        //    PlaySFX();
+        //}
     }
     public void RecoverPlayerEnergy()
     {
@@ -110,5 +115,22 @@ public class PlayerHealth : MonoBehaviour
     {
         yield return new WaitForSeconds(0.3f);
         isEnergized = false;
+    }
+
+
+    void PlaySFX()
+    {
+        if (audioSFX != null && !isPlayedSFX)
+        {
+            audioSFX.PlayGroundTouchSFX();
+        }
+        isPlayedSFX = true;
+        StartCoroutine(PaySFXCooldown());
+    }
+
+    private IEnumerator PaySFXCooldown()
+    {
+        yield return new WaitForSeconds(0.1f);
+        isPlayedSFX = false;
     }
 }

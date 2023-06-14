@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 6770986357036522034}
   - component: {fileID: 6770986357036522036}
   - component: {fileID: 6770986357036522037}
+  - component: {fileID: 4708097498990062391}
   m_Layer: 0
   m_Name: RicePlantGrass-M
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4708097498990062391
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6770986357036522035}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2383232, y: 1.4593405, z: 0.92141724}
+  m_Center: {x: 0.0000019073486, y: 0.4782701, z: 0}

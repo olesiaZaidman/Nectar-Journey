@@ -28,10 +28,10 @@ public class CanvasManagerStartMenu : CanvasManager
 
    public void OpenLoadingCanvas()
     {
-        loadingCanvas.SetActive(true);
+      loadingCanvas.SetActive(true);
         gameMenuCanvas.SetActive(false);
         flowers.SetActive(false);
-        uiFX.SetActive(false);
+      uiFX.SetActive(false);
     }
 
     void OpenStartCanvas()

@@ -63,6 +63,25 @@ public class SceneLoadManager : MonoBehaviour
     }
 
 
+    public void LoadNextScene()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = (currentSceneIndex + 1) % SceneManager.sceneCountInBuildSettings;
+
+        float _delay = 0.15f;
+        //Debug.Log("Clicked");
+        if (Time.timeScale == 0)
+        { Time.timeScale = 1; }
+
+        if (audioSFX != null)
+        {
+            audioSFX.PlayClickSFX();
+        }
+        StartCoroutine(WaitAndLoad(_delay, nextSceneIndex));
+
+    }
+
+
     public void StartGame()
     {
         float _delay = 0.1f;

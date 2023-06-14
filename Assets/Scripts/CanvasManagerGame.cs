@@ -17,6 +17,8 @@ public class CanvasManagerGame : CanvasManager
     bool showGameOver = false;
     bool isMenuOpen = false;
     bool isHintOpen = false;
+
+   //public static bool isMenuOnPauseOpen = false;
     //protected override bool IsMenuOpen
     //{
     //    get { return isMenuOpen; }
@@ -93,6 +95,11 @@ public class CanvasManagerGame : CanvasManager
 
         if (isHintOpen)
         {
+            if (audioSFX != null)
+            {
+                audioSFX.PlayHintsOpenSFX();
+            }
+ 
             isHintOpen = false;
             hintPanel.SetActive(false);
         }
@@ -115,7 +122,7 @@ public class CanvasManagerGame : CanvasManager
 
         if (audioSFX != null)
         {
-            audioSFX.PlaySwipeSFX();
+            audioSFX.PlayHintsOpenSFX();
         }
 
         if (!GameData.isGameOver)
@@ -146,7 +153,7 @@ public class CanvasManagerGame : CanvasManager
     {
         if (audioSFX != null)
         {
-            audioSFX.PlayClickSFX();
+            audioSFX.PlayNextHintButtonClickSFX();
         }
         uIController.ShowNextHint();
     }
@@ -155,7 +162,7 @@ public class CanvasManagerGame : CanvasManager
     {
         if (audioSFX != null)
         {
-            audioSFX.PlayClickSFX();
+            audioSFX.PlayNextHintButtonClickSFX();
         }
         uIController.ShowPreviousHint();
     }

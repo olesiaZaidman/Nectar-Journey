@@ -8,6 +8,7 @@ TagManager:
   - Particle
   - Flower
   - Ground
+  - Grass
   layers:
   - Default
   - TransparentFX

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class GameData : MonoBehaviour
@@ -17,12 +18,55 @@ public class GameData : MonoBehaviour
     public static int PlayerMaxHP { get { return playerMaxHP; } }
 
 
+    static float levelDifficultyMax;
+    public static float LevelDifficultyMax { get { return levelDifficultyMax; } }
+
+    static float levelDifficulty;
+    public static float LevelDifficulty { get { return levelDifficulty; } }
 
     static GameData instance;
 
     public GameData GetGameDataInstance()
     { return instance; }
 
+    public static void IncreaseLevelDifficulty()
+    {
+        float deltaDiff = 0.1f;
+
+        levelDifficulty += deltaDiff;
+        levelDifficulty = Mathf.Clamp(levelDifficulty, 0f, LevelDifficultyMax);
+
+        if (LevelDifficulty >= LevelDifficultyMax)
+        {
+            FindObjectOfType<SceneLoadManager>().LoadNextScene();
+        }
+    }
+    public static void SetLevelDifficulty()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        float startLevelDiff = 0.2f;
+
+
+        if (currentSceneIndex == 1)
+        { 
+            levelDifficultyMax = 0.5f;
+        }
+
+        if (currentSceneIndex == 2)
+        {
+            levelDifficultyMax = 0.5f; 
+        }
+
+        if (currentSceneIndex == 3)
+        {
+            levelDifficultyMax = 0.5f; 
+        }
+
+        levelDifficulty = startLevelDiff;
+        levelDifficulty = Mathf.Clamp(levelDifficulty, 0f, LevelDifficultyMax);
+
+        Debug.Log("Current Level: "+ currentSceneIndex+" "+"Current difficulty Max: "+ levelDifficultyMax);
+    }
     void Awake()
     {
         ManageSingleton();
@@ -34,6 +78,7 @@ public class GameData : MonoBehaviour
         isAudioOn = true;
         isGameFreeze = false;
         //Time.timeScale = 1;
+
     }
 
     void ManageSingleton()

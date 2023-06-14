@@ -13,18 +13,24 @@ public class PlayerController : MonoBehaviour
     //  private Quaternion targetRotation;  // Target rotation of the GameObject
 
     public UnityEvent decreaseHealthBar;
+    AudioEffects audioSFX;
 
     bool spentEnergy = false;
+
+    int energySpent = 3;
     void Start()
     {
+        audioSFX = FindObjectOfType<AudioEffects>();
         rb = GetComponent<Rigidbody>();
     }
 
     public void BoostUp(float _modifier)
-    { 
-    rb.velocity = Vector3.up * velocity* _modifier;            // rb.AddForce(new Vector3(0, velocity, 0), ForceMode.Impulse);
+    {
 
+        rb.velocity = Vector3.up * velocity* _modifier;            // rb.AddForce(new Vector3(0, velocity, 0), ForceMode.Impulse);
     }
+
+
 
     // Update is called once per frame
     void Update()
@@ -40,7 +46,7 @@ public class PlayerController : MonoBehaviour
             if (!spentEnergy)
             {
                 spentEnergy = true;
-                GameData.DecreasePlayerHP(3);
+                GameData.DecreasePlayerHP(energySpent);
                 decreaseHealthBar.Invoke();
                 StartCoroutine(FlyCooldown());
             }
