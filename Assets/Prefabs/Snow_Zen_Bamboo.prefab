@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8113509010260954135}
   - component: {fileID: 7847484839542764706}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider (1)
   m_TagString: Hazard
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7810796228138296929}
   - component: {fileID: 4969334582380975309}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider
   m_TagString: Hazard
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5335688020503824059}
   - component: {fileID: 6714753156686290466}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider (2)
   m_TagString: Hazard
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 9015561168604780832}
   - component: {fileID: 9015561168603775654}
   - component: {fileID: 9077326584661491418}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Snow_Zen_Bamboo
   m_TagString: Hazard
   m_Icon: {fileID: 0}

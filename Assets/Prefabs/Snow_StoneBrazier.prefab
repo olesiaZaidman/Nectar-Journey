@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1206510401881217174}
   - component: {fileID: 1206510401880540852}
   - component: {fileID: 4923082636538649121}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Snow_StoneBrazier
   m_TagString: Hazard
   m_Icon: {fileID: 0}
@@ -172,6 +172,10 @@ PrefabInstance:
     - target: {fileID: 2128562871506984861, guid: e9519a24b94a67647a1db5e3c5d33136, type: 3}
       propertyPath: m_Name
       value: FireNew (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2128562871506984861, guid: e9519a24b94a67647a1db5e3c5d33136, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9519a24b94a67647a1db5e3c5d33136, type: 3}

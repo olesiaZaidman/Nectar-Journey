@@ -67,7 +67,7 @@ public class PlayerHealth : MonoBehaviour
         if (other.collider.gameObject.CompareTag("Hazard") && !GameData.isGameOver)
         {
         //    print("Triggered by a hazard!");
-           //!!! GameData.isGameOver = true;
+         GameData.isGameOver = true;
           //  HurtPlayer();
         }
 

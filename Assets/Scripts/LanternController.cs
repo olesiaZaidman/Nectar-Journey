@@ -32,7 +32,7 @@ public class LanternController : MonoBehaviour
                 Debug.Log("Hazard is there");
                 Debug.Log("hit " + hit.transform.name);
                 Debug.DrawRay(position, Vector3.down * raycastDistance, Color.green);
-                Destroy(gameObject, 2f);
+                Destroy(gameObject);
             }
 
             else if (hit.transform.CompareTag("Flower"))

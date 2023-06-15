@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6676630344322767317}
   - component: {fileID: 6676630344322767314}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Spot Light (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6676630345257020627}
   - component: {fileID: 6676630345257020624}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point Light (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 7760848349005219465}
   - component: {fileID: 6676630344932078204}
   - component: {fileID: 3971107901639319866}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Paper_Lantern
   m_TagString: Hazard
   m_Icon: {fileID: 0}
@@ -302,6 +302,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e168f09208713e4c8189f95955f99a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyThreshold: 10
+  raycastDistance: 100
 --- !u!1001 &6676630345707204220
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -312,6 +314,10 @@ PrefabInstance:
     - target: {fileID: 8916702951978507558, guid: b31a9219ef480a44a98e1c0e4559314d, type: 3}
       propertyPath: m_Name
       value: FireNewLantern (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8916702951978507558, guid: b31a9219ef480a44a98e1c0e4559314d, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8916702951978507558, guid: b31a9219ef480a44a98e1c0e4559314d, type: 3}
       propertyPath: m_IsActive

@@ -3,37 +3,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LanternSpawner : MonoBehaviour
+public class LanternSpawner : ObjectsInAirSpawner
 {
-    float xCoordinate = 0;
-    float yCoordinate = 7f;
-    float zCoordinate = -21f;
-    Vector3 pos;
+  //  float xCoordinate = 0;
+  //  float yCoordinate = 7f;
+ //   float zCoordinate = -21f;
+   // Vector3 pos;
 
-    public GameObject[] prefabs;
-    int index;
+  //  public GameObject[] prefabs;
+  //  int index;
 
 
-    float startTime = 4f;
+  //  float startTimeDelay = 3f;
 
-    float minRepeatTime = 1f;
-    float maxRepeatTime = 5f; //3-20
+  //  float minSpawnRepeatTime = 2f;
+   // float maxSpawnRepeatTime = 10f; //3-20
 
-    void Start()
-    {
-        pos = new Vector3(xCoordinate, yCoordinate, zCoordinate);
-        Invoke("Spawn", startTime);
-    }
+    //void Start()
+    //{
+    //    StartSpawningWithIntervals();
+    //}
 
-    void Spawn() //GameObject Spawn() 
-    {
-        index = Random.Range(0, prefabs.Length);
-        float repeatTime = Random.Range(minRepeatTime, maxRepeatTime);
-        Quaternion prefabRotation = prefabs[index].transform.rotation;
+    //public virtual void StartSpawningWithIntervals()
+    //{
+    //    pos = new Vector3(xCoordinate, yCoordinate, zCoordinate);
+    //    Invoke("Spawn", startTimeDelay);
+    //}
 
-        GameObject instance = Instantiate(prefabs[index], pos, prefabRotation);
-      //  return instance;
+    //void Spawn() //GameObject Spawn() 
+    //{
+    //    index = Random.Range(0, prefabs.Length);
+    //    float repeatTime = Random.Range(minSpawnRepeatTime, maxSpawnRepeatTime);
+    //    Quaternion prefabRotation = prefabs[index].transform.rotation;
 
-        Invoke("Spawn", repeatTime);
-    }
+    //    GameObject instance = Instantiate(prefabs[index], pos, prefabRotation);
+    //  //  return instance;
+
+    //    Invoke("Spawn", repeatTime);
+    //}
 }

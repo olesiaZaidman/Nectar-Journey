@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1908277060474486877}
   - component: {fileID: 1908277060473372879}
   - component: {fileID: 1908277060475533246}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zen_Lantern
   m_TagString: Hazard
   m_Icon: {fileID: 0}
@@ -110,6 +110,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireNewLantern
       objectReference: {fileID: 0}
+    - target: {fileID: 8916702951978507558, guid: b31a9219ef480a44a98e1c0e4559314d, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8916702951978507577, guid: b31a9219ef480a44a98e1c0e4559314d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -175,6 +179,10 @@ PrefabInstance:
     - target: {fileID: 8916702951978507558, guid: b31a9219ef480a44a98e1c0e4559314d, type: 3}
       propertyPath: m_Name
       value: FireNewLantern (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8916702951978507558, guid: b31a9219ef480a44a98e1c0e4559314d, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8916702951978507577, guid: b31a9219ef480a44a98e1c0e4559314d, type: 3}
       propertyPath: m_RootOrder

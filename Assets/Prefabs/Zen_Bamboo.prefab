@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2214342516266037241}
   - component: {fileID: 2214342516264810543}
   - component: {fileID: 2188598013944328209}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Zen_Bamboo
   m_TagString: Hazard
   m_Icon: {fileID: 0}
