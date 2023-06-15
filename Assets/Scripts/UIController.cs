@@ -17,7 +17,7 @@ public class UIController : MonoBehaviour
     [SerializeField] TextMeshProUGUI hintHeaderText;
     [SerializeField] TextMeshProUGUI hintText;
 
-    [SerializeField] GameObject sliderFX;
+ //   [SerializeField] GameObject sliderFX;
     Hints hintsManager;
 
     Color originalYellowcolor = new Color(1, 0.90463f, 0.5226415f, 1); //FFE785
@@ -26,7 +26,7 @@ public class UIController : MonoBehaviour
     void Awake()
     {
         hintsManager = FindObjectOfType<Hints>();
-        sliderFX.SetActive(false);
+      //  sliderFX.SetActive(false);
         fill.color = originalYellowcolor;   
     }
 

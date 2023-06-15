@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5953819578547983129}
   - component: {fileID: 5953819578548870165}
   - component: {fileID: 5953819578549852531}
-  - component: {fileID: 1030097398176783849}
+  - component: {fileID: 2326238547489376898}
   m_Layer: 0
   m_Name: Zen_Rock
   m_TagString: Hazard
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 5953819578547810079}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 2, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1030097398176783849
-BoxCollider:
+--- !u!136 &2326238547489376898
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,6 +94,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.72043514, y: 0.9456899, z: 0.478603}
-  m_Center: {x: 0.007405281, y: 0.47284496, z: -0.049476683}
+  m_Radius: 0.24153502
+  m_Height: 1.0559443
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.43203235, z: -0.05424587}

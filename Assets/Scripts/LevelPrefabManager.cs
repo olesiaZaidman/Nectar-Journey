@@ -9,10 +9,10 @@ public class LevelPrefabManager : MonoBehaviour
 {
     public const int amountPrefabs = 10;
     public TextMeshProUGUI debug;
-    [Range(0f, 1f)]
 
     public GameObject[] levelFlowerPrefabs;
     public GameObject[] levelHazardPrefabs;
+
     static GameObject[] levelPrefabs;
 
      static bool setIsReady = false;

@@ -97,8 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: e576ba355e2dcf94eaec5ef7a9fa3a2d, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: a5e3f1d2a01b42748a5f18b05f9b2c09, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -756,7 +756,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 599660786}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.25690794, y: 0.5009305, z: -3.6951354}
+  m_LocalPosition: {x: 0.34, y: 0.5009305, z: -3.6951354}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6433,7 +6433,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1353630577
 Transform:
@@ -6462,6 +6462,10 @@ PrefabInstance:
     - target: {fileID: 4607321089309267924, guid: 12a8e3928131cc04dafd1133115dc382, type: 3}
       propertyPath: m_Name
       value: Tulips_L (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4607321089309267924, guid: 12a8e3928131cc04dafd1133115dc382, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4607321089309617840, guid: 12a8e3928131cc04dafd1133115dc382, type: 3}
       propertyPath: m_RootOrder
@@ -6654,6 +6658,10 @@ PrefabInstance:
     - target: {fileID: 4607321089309267924, guid: 12a8e3928131cc04dafd1133115dc382, type: 3}
       propertyPath: m_Name
       value: Tulips_L
+      objectReference: {fileID: 0}
+    - target: {fileID: 4607321089309267924, guid: 12a8e3928131cc04dafd1133115dc382, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4607321089309617840, guid: 12a8e3928131cc04dafd1133115dc382, type: 3}
       propertyPath: m_RootOrder
@@ -8876,7 +8884,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 468131951119955765, guid: 116ee923ddc565e4ca007ae12e325d51, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -108.62292
+      value: -18
       objectReference: {fileID: 0}
     - target: {fileID: 468131951119955765, guid: 116ee923ddc565e4ca007ae12e325d51, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
