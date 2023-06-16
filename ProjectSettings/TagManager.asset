@@ -9,6 +9,7 @@ TagManager:
   - Flower
   - Ground
   - Grass
+  - WinFlower
   layers:
   - Default
   - TransparentFX

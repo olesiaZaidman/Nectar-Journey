@@ -33,7 +33,7 @@ public class GameData : MonoBehaviour
     {
         ManageSingleton();
 
-        playerHP = 100;
+        SetPlayerHPToMax();
         ResetScore();
 
         isGameOver = false;
@@ -169,6 +169,14 @@ public class GameData : MonoBehaviour
         playerHP += _i;
         playerHP = Mathf.Clamp(playerHP, 0, playerMaxHP);
     }
+
+
+    public static void SetPlayerHPToMax()
+    {
+        playerHP = playerMaxHP;
+        playerHP = Mathf.Clamp(playerHP, 0, playerMaxHP);
+    }
+
 
     public static void DecreasePlayerHP(int _i)
     {

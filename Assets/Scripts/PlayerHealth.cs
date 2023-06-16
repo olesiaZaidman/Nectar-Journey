@@ -7,8 +7,12 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] ParticleSystem nectarFX;
     [SerializeField] ParticleSystem dieFX;
+    [SerializeField] ParticleSystem winLevelFX;
+
 
     public UnityEvent increaseHealthBar;
+    public UnityEvent loadNextLevel;
+
     bool isEnergized = false;
     float groundPushMod = 1.5f;
 
@@ -83,8 +87,18 @@ public class PlayerHealth : MonoBehaviour
     {    
         if (other.gameObject.CompareTag("Flower") && !GameData.isGameOver)
         {
+           
             RecoverPlayerEnergy();
             GameData.IncreaseScore();
+            uIController.UpdateScore();
+        }
+
+        if (other.gameObject.CompareTag("WinFlower") && !GameData.isGameOver)
+        {
+            //  RecoverPlayerEnergy();
+            //  GameData.IncreaseScore();
+            //save score
+            MeetWinLevelCondition();
             uIController.UpdateScore();
         }
 
@@ -93,6 +107,19 @@ public class PlayerHealth : MonoBehaviour
         //    PlaySFX();
         //}
     }
+
+    public void MeetWinLevelCondition()
+    {
+        if (winLevelFX != null)
+        {
+            winLevelFX.Play();
+            GameData.SetPlayerHPToMax();
+            increaseHealthBar.Invoke();
+            loadNextLevel.Invoke();
+        }
+
+    }
+
     public void RecoverPlayerEnergy()
     {
      //   Debug.Log("We have more energy!");

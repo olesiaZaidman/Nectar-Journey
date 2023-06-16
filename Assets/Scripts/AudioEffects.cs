@@ -5,7 +5,7 @@ using UnityEngine;
 public class AudioEffects : MonoBehaviour
 {
     static AudioEffects instance;
-
+  
     public AudioEffects GetAudioPlayerInstance()
     { return instance; }
 

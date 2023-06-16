@@ -93,7 +93,7 @@ public class SceneLoadManager : MonoBehaviour
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIndex = (currentSceneIndex + 1) % SceneManager.sceneCountInBuildSettings;
 
-        float _delay = 0.15f;
+      float _delay = 0.15f;
         //Debug.Log("Clicked");
         if (Time.timeScale == 0)
         { Time.timeScale = 1; }
@@ -107,6 +107,29 @@ public class SceneLoadManager : MonoBehaviour
         StartCoroutine(WaitAndLoad(_delay, nextSceneIndex));
 
     }
+
+
+    public void LoadNextSceneOnWinLevel()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = (currentSceneIndex + 1) % SceneManager.sceneCountInBuildSettings;
+
+        float _delay = 1f;
+        //Debug.Log("Clicked");
+        if (Time.timeScale == 0)
+        { Time.timeScale = 1; }
+
+        if (audioSFX != null)
+        {
+            audioSFX.PlayClickSFX();
+        }
+
+        //  PlayStartcrossFadeAnimation();
+        StartCoroutine(WaitAndLoad(_delay, nextSceneIndex));
+
+    }
+
+
 
 
     public void StartGame()
