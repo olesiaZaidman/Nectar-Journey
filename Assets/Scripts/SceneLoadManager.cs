@@ -3,20 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
+using UnityEngine.SocialPlatforms.Impl;
+using Unity.VisualScripting;
 
 public class SceneLoadManager : MonoBehaviour
 {
     public UnityEvent startGame;
+
     int currentSceneIndex;
     AudioEffects audioSFX;
 
     [SerializeField] GameObject uiParticles;
+
+    public Animator sceneTransition;
+ //  public Animator sceneStartCircleTransition;
+
+    bool isNext = false; 
 
     void Awake()
     {
         currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         audioSFX = FindObjectOfType<AudioEffects>();
     }
+
+    private void Start()
+    {
+        PlayStartSceneSound();
+    }
+
+
+
 
     void Update()
     {
@@ -25,6 +41,14 @@ public class SceneLoadManager : MonoBehaviour
             QuitGame();
             Debug.Log("Quit game");
         }
+
+        if (Input.GetKey(KeyCode.N) && !isNext) //Input.GetKey(KeyCode.Space)
+        {
+            isNext = true;
+            LoadNextScene();
+        }
+
+       
     }
     public void ReloadGame()
     {
@@ -50,7 +74,7 @@ public class SceneLoadManager : MonoBehaviour
     public void LoadScene(int _sceneNumber)
     {
         float _delay = 0.15f;
-        Debug.Log("Clicked");
+        // Debug.Log("Clicked");
         if (Time.timeScale == 0)
         { Time.timeScale = 1; }
 
@@ -58,6 +82,7 @@ public class SceneLoadManager : MonoBehaviour
         {
             audioSFX.PlayClickSFX();
         }
+        //   PlayStartcrossFadeAnimation();
         StartCoroutine(WaitAndLoad(_delay, _sceneNumber));
 
     }
@@ -77,6 +102,8 @@ public class SceneLoadManager : MonoBehaviour
         {
             audioSFX.PlayClickSFX();
         }
+
+        //  PlayStartcrossFadeAnimation();
         StartCoroutine(WaitAndLoad(_delay, nextSceneIndex));
 
     }
@@ -97,10 +124,10 @@ public class SceneLoadManager : MonoBehaviour
         }
         startGame.Invoke();
 
-        
-      StartCoroutine(WaitAndLoad(_delay, _sceneId));
+        //  PlayStartcrossFadeAnimation();
+        StartCoroutine(WaitAndLoad(_delay, _sceneId));
 
-    }    
+    }
 
     public void LoadGame()
     {
@@ -108,15 +135,56 @@ public class SceneLoadManager : MonoBehaviour
         {
             audioSFX.PlayClickSFX();
         }
+
         int nextSceneIndex = (currentSceneIndex + 1) % SceneManager.sceneCountInBuildSettings;
         StartCoroutine(WaitAndLoad(1f, nextSceneIndex));
     }
 
     IEnumerator WaitAndLoad(float _delay, int _index)
     {
+        PlayStartcrossFadeAnimation();
         yield return new WaitForSeconds(_delay);
         SceneManager.LoadSceneAsync(_index);
-      //  SceneManager.LoadScene(_index);
+        //  SceneManager.LoadScene(_index);
+    }
+    void PlayStartcrossFadeAnimation()
+    {
+        if (sceneTransition != null)
+        { 
+            sceneTransition.SetTrigger("Start");
+        }
+
     }
 
+    //void PlayCircleAnimationAtStartIfNeeded()
+    //{
+    //    int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+    //    if (sceneStartCircleTransition != null)
+    //    {
+    //        if (currentSceneIndex == 1 && audioSFX != null)
+    //        {
+    //            audioSFX.PlayNectarRefillCollectionSFX();
+    //        }
+
+
+    //        if (currentSceneIndex > 1 && audioSFX != null)
+    //        {
+    //            sceneStartCircleTransition.SetTrigger("Start");
+    //            audioSFX.PlayNectarRefillCollectionSFX();
+    //        }
+
+    //    }
+
+        void PlayStartSceneSound()
+        {
+            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+            if (currentSceneIndex > 0 && audioSFX != null)
+            {
+                audioSFX.PlayNectarRefillCollectionSFX();
+            }
+
+        }
+  
 }

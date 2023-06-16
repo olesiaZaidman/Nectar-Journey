@@ -110,9 +110,9 @@ public class GameData : MonoBehaviour
         startLevelDifficulties[2] = 0.3f;
 
         float[] levelDifficultyMaxValues = new float[sceneCount - 1];//{ 0.6f, 0.7f, 0.9f };
-        levelDifficultyMaxValues[0] = 0.5f; // 0.7f;
-        levelDifficultyMaxValues[1] = 0.8f; // 0.8f;
-        levelDifficultyMaxValues[2] = 0.5f; // 0.9f;
+        levelDifficultyMaxValues[0] = 0.4f; // 0.7f;
+        levelDifficultyMaxValues[1] = 0.4f; // 0.8f;
+        levelDifficultyMaxValues[2] = 0.4f; // 0.9f;
 
 
 

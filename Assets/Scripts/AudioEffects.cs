@@ -21,6 +21,7 @@ public class AudioEffects : MonoBehaviour
     [SerializeField] AudioClip dieSFX;
     [SerializeField] AudioClip groundTouchSFX;
     [SerializeField] AudioClip nectarCollectSFX;
+    [SerializeField] AudioClip nectarRefillCollectSFX;
     [SerializeField] AudioClip finishSFX;
   //  [SerializeField][Range(0f, 1f)] float gameFxVolume;
 
@@ -108,6 +109,13 @@ public class AudioEffects : MonoBehaviour
     {
         PlaySFXClip(nectarCollectSFX, gameVolume- (volumeSFXmodifier*3));
     }
+
+    public void PlayNectarRefillCollectionSFX()
+    {
+        PlaySFXClip(nectarRefillCollectSFX, gameVolume - (volumeSFXmodifier * 2));
+    }
+
+
 
     public void PlayGroundTouchSFX()
     {
