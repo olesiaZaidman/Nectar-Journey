@@ -86,6 +86,7 @@ public class SceneLoadManager : MonoBehaviour
             audioSFX.PlayClickSFX();
         }
         //   PlayStartcrossFadeAnimation();
+        ScoreManager.ResetScoreIfCertainScene(_sceneNumber);
         StartCoroutine(WaitAndLoad(_delay, _sceneNumber));
 
     }

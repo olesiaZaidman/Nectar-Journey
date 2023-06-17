@@ -63,7 +63,7 @@ public class UIController : MonoBehaviour
         scoreText.SetText(ScoreManager.Score.ToString());
         scoreFinalText.SetText(ScoreManager.Score.ToString());
 
-        Debug.Log("We updated score: " + ScoreManager.Score);
+      //  Debug.Log("We updated score: " + ScoreManager.Score);
     }
 
     public void SetStartScore()

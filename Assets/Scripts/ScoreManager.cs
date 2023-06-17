@@ -18,7 +18,7 @@ public class ScoreManager : MonoBehaviour
     {
         ManageSingleton();
 
-        //        ResetScore();
+        //        ResetScoreIfCertainScene();
 
     }
     void Start()
@@ -40,11 +40,11 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    public static void ResetScore()
+    public static void ResetScoreIfCertainScene(int _sceneNumber)
     {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+      //  int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
-        if (currentSceneIndex == 0)
+        if (_sceneNumber == 1)
         {
             score = 0;
         }
