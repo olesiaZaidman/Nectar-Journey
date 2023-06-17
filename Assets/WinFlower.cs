@@ -4,28 +4,17 @@ using UnityEngine;
 
 public class WinFlower : MonoBehaviour
 {
-
- //  [SerializeField] ParticleSystem winLevelNectarBoost;
     AudioSource winLevelAudioSource;
     [SerializeField] AudioClip win;
-    void Start()
-    {
-        
-    }
-
-
-    void Update()
-    {
-        
-    }
+    bool isWinLevel = false;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && !isWinLevel)
         {
             winLevelAudioSource = GetComponent<AudioSource>();
+            isWinLevel = true;
             winLevelAudioSource.PlayOneShot(win, AudioEffects.gameVolume);
-          //  winLevelNectarBoost.Play();
         }
     }
 }

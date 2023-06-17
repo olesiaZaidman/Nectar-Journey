@@ -21,6 +21,8 @@ public class PlayerHealth : MonoBehaviour
     AudioEffects audioSFX;
     bool isPlayedSFX = false;
     PlayerController playerController;
+
+    bool isWinLevel = false;
      void Awake()
     {
         uIController = FindObjectOfType<UIController>();
@@ -93,19 +95,21 @@ public class PlayerHealth : MonoBehaviour
             uIController.UpdateScore();
         }
 
-        if (other.gameObject.CompareTag("WinFlower") && !GameData.isGameOver)
+        if (other.gameObject.CompareTag("WinFlower") && !GameData.isGameOver && !isWinLevel)
         {
             //  RecoverPlayerEnergy();
             //  GameData.IncreaseScore();
             //save score
+            isWinLevel = true;
             MeetWinLevelCondition();
             uIController.UpdateScore();
+
+            //if (audioSFX != null)
+            //{
+            //    audioSFX.PlayWinLevelSFX();
+            //}          
         }
 
-        //if (other.gameObject.CompareTag("Grass") && !GameData.isGameOver)
-        //{
-        //    PlaySFX();
-        //}
     }
 
     public void MeetWinLevelCondition()

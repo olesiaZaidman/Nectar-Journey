@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
-using UnityEngine.SocialPlatforms.Impl;
-using Unity.VisualScripting;
+
 
 public class SceneLoadManager : MonoBehaviour
 {
@@ -114,7 +113,7 @@ public class SceneLoadManager : MonoBehaviour
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIndex = (currentSceneIndex + 1) % SceneManager.sceneCountInBuildSettings;
 
-        float _delay = 1f;
+        float _delay = 1.2f;
         //Debug.Log("Clicked");
         if (Time.timeScale == 0)
         { Time.timeScale = 1; }

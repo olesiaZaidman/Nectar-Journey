@@ -43,7 +43,14 @@ public class GameData : MonoBehaviour
 
     }
 
-
+    public static bool WinLevelCheck()
+    {
+        if (LevelDifficulty >= LevelDifficultyMax)
+        {
+            return true;
+        }
+        return false;
+    }
 
     void ManageSingleton()
     {
@@ -65,10 +72,8 @@ public class GameData : MonoBehaviour
         {
             isGameOver = true;
         }
-        //if (isGameOver)
-        //{ Time.timeScale = 0; }
     }
- 
+
 
     public static void IncreaseLevelDifficulty()
     {
@@ -77,18 +82,31 @@ public class GameData : MonoBehaviour
         levelDifficulty += deltaDiff;
         levelDifficulty = Mathf.Clamp(levelDifficulty, 0f, LevelDifficultyMax);
 
-        if (LevelDifficulty >= LevelDifficultyMax)
-        {
-            SceneLoadManager sceneLoadManager = FindObjectOfType<SceneLoadManager>();
-
-            if (sceneLoadManager != null)
-            {
-                sceneLoadManager.LoadNextScene();
-            }
-        }
+        //if (WinLevelCheck())
+        //{
+        //    LoadNextSceneOnWinLevel();
+        //}
     }
 
-  public static  void ResetScore()
+    //static void LoadNextSceneOnWinLevel()
+    //{
+    //    instance.StartCoroutine(LoadNextSceneOnWinLevelCheck());
+    //}
+
+    //static IEnumerator LoadNextSceneOnWinLevelCheck()
+    //{
+    //    SceneLoadManager sceneLoadManager = FindObjectOfType<SceneLoadManager>();
+
+    //    yield return new WaitForSeconds(1f);
+
+
+    //    if (sceneLoadManager != null)
+    //    {
+    //        sceneLoadManager.LoadNextScene();
+    //    }
+    //}
+
+    public static void ResetScore()
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         if (currentSceneIndex == 0)
@@ -104,13 +122,13 @@ public class GameData : MonoBehaviour
         int sceneCount = SceneManager.sceneCountInBuildSettings;
 
 
-        float[] startLevelDifficulties = new float[sceneCount-1]; //= { 0.2f, 0.3f, 0.4f };
-        startLevelDifficulties[0]  = 0.2f;
+        float[] startLevelDifficulties = new float[sceneCount - 1]; //= { 0.2f, 0.3f, 0.4f };
+        startLevelDifficulties[0] = 0.2f;
         startLevelDifficulties[1] = 0.3f;
         startLevelDifficulties[2] = 0.3f;
 
         float[] levelDifficultyMaxValues = new float[sceneCount - 1];//{ 0.6f, 0.7f, 0.9f };
-        levelDifficultyMaxValues[0] = 0.4f; // 0.7f;
+        levelDifficultyMaxValues[0] = 0.3f; // 0.7f;
         levelDifficultyMaxValues[1] = 0.4f; // 0.8f;
         levelDifficultyMaxValues[2] = 0.4f; // 0.9f;
 
@@ -122,7 +140,7 @@ public class GameData : MonoBehaviour
         {
             int index = currentSceneIndex - 1;
 
-            float startLevelDiff = startLevelDifficulties[index];           
+            float startLevelDiff = startLevelDifficulties[index];
             levelDifficultyMax = levelDifficultyMaxValues[index];  //  float levelDifficultyMax = levelDifficultyMaxValues[index];
 
             levelDifficulty = Mathf.Clamp(startLevelDiff, 0f, LevelDifficultyMax);
@@ -163,7 +181,7 @@ public class GameData : MonoBehaviour
 
         //Debug.Log("Current Level: "+ currentSceneIndex+" "+"Current difficulty Max: "+ levelDifficultyMax);
     }
-  
+
     public static void IncreasePlayerHP(int _i)
     {
         playerHP += _i;

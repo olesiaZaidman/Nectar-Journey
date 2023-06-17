@@ -12,6 +12,9 @@ public class LevelPrefabManager : MonoBehaviour
 
     public GameObject[] levelFlowerPrefabs;
     public GameObject[] levelHazardPrefabs;
+    public GameObject grassPrefab;
+    public GameObject winLevelPrefab;
+
 
     static GameObject[] levelPrefabs;
 
@@ -32,15 +35,40 @@ public class LevelPrefabManager : MonoBehaviour
         counter++;
     }
 
+    void InsertWinLevelPrefab(GameObject _winLevelPrefab, GameObject _grass)
+    {
+        if (_grass != null && _winLevelPrefab != null)
+        {
+            levelPrefabs[4] = _grass;
+            levelPrefabs[5] = _winLevelPrefab;
+            levelPrefabs[6] = _grass;
+        }
+
+        else 
+        {
+            Debug.Log("We lack the win level perfab for InsertWinLevelPrefab working properly");
+        }
+    }
+
     public void CreateNewPrefabsSet()
     {
+        GameData.IncreaseLevelDifficulty();
+
         // if (counter % 2 == 0)
         // {
-        GameData.IncreaseLevelDifficulty();
-        Debug.Log("Difficulty was increased" + GameData.LevelDifficulty);
+
+        Debug.Log("Difficulty was I increased" + GameData.LevelDifficulty);
         debug.SetText("Difficulty was increased: " + GameData.LevelDifficulty);
         //  }
         levelPrefabs = AddRandomObjectsToList(GameData.LevelDifficulty);
+
+        if (GameData.WinLevelCheck())
+        {
+
+            InsertWinLevelPrefab(winLevelPrefab, grassPrefab);
+            debug.SetText("You won the level!");
+        }
+
         counter++;
     }
 

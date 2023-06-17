@@ -44,13 +44,13 @@ public class Spawner : MonoBehaviour
         for (int i = 0; i < LevelPrefabManager.amountPrefabs; i++)
         {
             // Calculate the index of the prefab to instantiate
-            index = Random.Range(0, _levelPrefabs.Length); //exclusive OR            // int index = i % levelPrefabs.Length;
-
+            //  index = Random.Range(0, _levelPrefabs.Length); //exclusive OR            // int index = i % levelPrefabs.Length;
+           
             // Instantiate the prefab at the current position
-             GameObject instance =  Instantiate(_levelPrefabs[index], new Vector3(xPos,yPos+ _levelPrefabs[index].transform.position.y, zPos+_offset), Quaternion.identity);
+             GameObject instance =  Instantiate(_levelPrefabs[i], new Vector3(xPos,yPos+ _levelPrefabs[i].transform.position.y, zPos+_offset), Quaternion.identity);
             //+parentTransform.
 
-            instance.name = _levelPrefabs[index].name+"_" +(i+1);   
+            instance.name = _levelPrefabs[i].name+"_" +(i+1);   
             instance.transform.SetParent(parentTransform);
 
             // Increment the Z-coordinate for the next instantiation

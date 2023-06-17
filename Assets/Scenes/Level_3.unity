@@ -658,7 +658,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.058522724}
   m_AnchorMax: {x: 1, y: 0.119}
-  m_AnchoredPosition: {x: 21.330078, y: 12.950439}
+  m_AnchoredPosition: {x: 21.330078, y: 12.950531}
   m_SizeDelta: {x: -467.03, y: 52.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &237248928
@@ -3966,13 +3966,14 @@ MonoBehaviour:
   - {fileID: 8369655174634185803, guid: 8a997830a5a8b174f9c8ce7f18d7397e, type: 3}
   - {fileID: 3393741147027363218, guid: cd8f41c5b333c7b4d945e2e43257974b, type: 3}
   levelHazardPrefabs:
-  - {fileID: 9015561168601653106, guid: f1e3d367b09a5634ca223a2a0a6ba72d, type: 3}
+  - {fileID: 6259485938732205794, guid: 627d41442fb08534f9d964b26ea7630c, type: 3}
   - {fileID: 1908277060475533247, guid: e4d570287ec3e9f4997b977f87032213, type: 3}
   - {fileID: 7483304332742208570, guid: d894d1d12fcb93e42a576d4ef569b9c1, type: 3}
   - {fileID: 5791889041353758407, guid: c6c5c2a478cda5c49b8e6865bebae114, type: 3}
   - {fileID: 1206510401878158800, guid: fa519ea9ca6d5954992b945eedd9c6e4, type: 3}
-  - {fileID: 5953819578547810079, guid: cd7d65ce855ac514b96883f90a9499bd, type: 3}
   - {fileID: 6299230456518539785, guid: 12dc8536524e323489a2ebfa2f220be9, type: 3}
+  grassPrefab: {fileID: 3393741147027363218, guid: cd8f41c5b333c7b4d945e2e43257974b, type: 3}
+  winLevelPrefab: {fileID: 5711488951712325622, guid: f483ac3afabb10f4d89e82c468b5f1e2, type: 3}
   combinedList: []
 --- !u!114 &1356428826
 MonoBehaviour:
@@ -7010,17 +7011,37 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1282396223}
     - target: {fileID: 5101099995503261463, guid: a6b5638abb8104141ab1437ed4e9f7fc, type: 3}
+      propertyPath: loadNextLevel.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5101099995503261463, guid: a6b5638abb8104141ab1437ed4e9f7fc, type: 3}
       propertyPath: increaseHealthBar.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5101099995503261463, guid: a6b5638abb8104141ab1437ed4e9f7fc, type: 3}
+      propertyPath: loadNextLevel.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5101099995503261463, guid: a6b5638abb8104141ab1437ed4e9f7fc, type: 3}
+      propertyPath: loadNextLevel.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 686160312}
     - target: {fileID: 5101099995503261463, guid: a6b5638abb8104141ab1437ed4e9f7fc, type: 3}
       propertyPath: increaseHealthBar.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5101099995503261463, guid: a6b5638abb8104141ab1437ed4e9f7fc, type: 3}
+      propertyPath: loadNextLevel.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5101099995503261463, guid: a6b5638abb8104141ab1437ed4e9f7fc, type: 3}
       propertyPath: increaseHealthBar.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 577408236}
+    - target: {fileID: 5101099995503261463, guid: a6b5638abb8104141ab1437ed4e9f7fc, type: 3}
+      propertyPath: loadNextLevel.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadNextSceneOnWinLevel
+      objectReference: {fileID: 0}
     - target: {fileID: 5101099995503261463, guid: a6b5638abb8104141ab1437ed4e9f7fc, type: 3}
       propertyPath: increaseHealthBar.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -7030,8 +7051,16 @@ PrefabInstance:
       value: UpdateProgressBar
       objectReference: {fileID: 0}
     - target: {fileID: 5101099995503261463, guid: a6b5638abb8104141ab1437ed4e9f7fc, type: 3}
+      propertyPath: loadNextLevel.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SceneLoadManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5101099995503261463, guid: a6b5638abb8104141ab1437ed4e9f7fc, type: 3}
       propertyPath: increaseHealthBar.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UIController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5101099995503261463, guid: a6b5638abb8104141ab1437ed4e9f7fc, type: 3}
+      propertyPath: loadNextLevel.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5101099995503261463, guid: a6b5638abb8104141ab1437ed4e9f7fc, type: 3}
       propertyPath: increaseHealthBar.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

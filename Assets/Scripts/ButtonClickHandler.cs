@@ -8,7 +8,7 @@ public class ButtonClickHandler : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         // Handle the button click event here
-        Debug.Log("Button Clicked!");
+     //   Debug.Log("Button Clicked!");
      //   swipeDebug.SetText("Button Clicked!");
     }
 }
