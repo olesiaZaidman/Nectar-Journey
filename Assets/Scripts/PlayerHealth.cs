@@ -19,7 +19,7 @@ public class PlayerHealth : MonoBehaviour
     bool isDead = false;
     UIController uIController;
     AudioEffects audioSFX;
-    bool isPlayedSFX = false;
+   // bool isPlayedSFX = false;
     PlayerController playerController;
 
     bool isWinLevel = false;
@@ -44,9 +44,7 @@ public class PlayerHealth : MonoBehaviour
         //Particle
         if (other.gameObject.CompareTag("Hazard"))
         {
-            // Reduce player's health
          //  !!! GameData.isGameOver = true;
-           // HurtPlayer();
         }       
     }
 
@@ -72,34 +70,33 @@ public class PlayerHealth : MonoBehaviour
         //Hazard
         if (other.collider.gameObject.CompareTag("Hazard") && !GameData.isGameOver)
         {
-        //    print("Triggered by a hazard!");
          GameData.isGameOver = true;
-          //  HurtPlayer();
+
         }
 
         if (other.gameObject.CompareTag("Ground"))
         {
-            // Reduce player's health?
-           
-            playerController.BoostUp(groundPushMod);
+            playerController.BoostUpAndSpendEnergy(groundPushMod);
         }
     }
 
     void OnTriggerEnter(Collider other)
     {    
         if (other.gameObject.CompareTag("Flower") && !GameData.isGameOver)
-        {
-           
+        {          
             RecoverPlayerEnergy();
-            GameData.IncreaseScore();
+            ScoreManager.IncreaseScore();
             uIController.UpdateScore();
+        }
+
+        if (other.gameObject.CompareTag("Hazard") && !GameData.isGameOver)
+        {
+            GameData.isGameOver = true;
         }
 
         if (other.gameObject.CompareTag("WinFlower") && !GameData.isGameOver && !isWinLevel)
         {
-            //  RecoverPlayerEnergy();
-            //  GameData.IncreaseScore();
-            //save score
+
             isWinLevel = true;
             MeetWinLevelCondition();
             uIController.UpdateScore();
@@ -126,7 +123,6 @@ public class PlayerHealth : MonoBehaviour
 
     public void RecoverPlayerEnergy()
     {
-     //   Debug.Log("We have more energy!");
         if (nectarFX != null && !isEnergized)
         {
             if (audioSFX != null)
@@ -139,7 +135,6 @@ public class PlayerHealth : MonoBehaviour
             increaseHealthBar.Invoke();
             StartCoroutine(EnergyCooldown());
         }
-
     }
 
     private IEnumerator EnergyCooldown()
@@ -149,19 +144,19 @@ public class PlayerHealth : MonoBehaviour
     }
 
 
-    void PlaySFX()
-    {
-        if (audioSFX != null && !isPlayedSFX)
-        {
-            audioSFX.PlayGroundTouchSFX();
-        }
-        isPlayedSFX = true;
-        StartCoroutine(PaySFXCooldown());
-    }
+    //void PlaySFX()
+    //{
+    //    if (audioSFX != null && !isPlayedSFX)
+    //    {
+    //        audioSFX.PlayGroundTouchSFX();
+    //    }
+    //    isPlayedSFX = true;
+    //    StartCoroutine(PaySFXCooldown());
+    //}
 
-    private IEnumerator PaySFXCooldown()
-    {
-        yield return new WaitForSeconds(0.1f);
-        isPlayedSFX = false;
-    }
+    //private IEnumerator PaySFXCooldown()
+    //{
+    //    yield return new WaitForSeconds(0.1f);
+    //    isPlayedSFX = false;
+    //}
 }

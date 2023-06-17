@@ -28,6 +28,7 @@ public class SceneLoadManager : MonoBehaviour
     private void Start()
     {
         PlayStartSceneSound();
+        ScoreManager.SaveScoreAtLevelStart();
     }
 
 
@@ -56,7 +57,10 @@ public class SceneLoadManager : MonoBehaviour
         {
             audioSFX.PlayClickSFX();
         }
+        ScoreManager.ResetScoreOnReloadLevel();
         StartCoroutine(WaitAndLoad(1f, currentSceneIndex));
+
+
     }
 
     public void QuitGame()
@@ -113,7 +117,7 @@ public class SceneLoadManager : MonoBehaviour
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIndex = (currentSceneIndex + 1) % SceneManager.sceneCountInBuildSettings;
 
-        float _delay = 1.2f;
+        float _delay = 1f;
         //Debug.Log("Clicked");
         if (Time.timeScale == 0)
         { Time.timeScale = 1; }

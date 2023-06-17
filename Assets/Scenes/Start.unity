@@ -1016,6 +1016,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 71.229, y: -92.855, z: -69.156}
+--- !u!1 &773537512
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 773537514}
+  - component: {fileID: 773537513}
+  m_Layer: 0
+  m_Name: ScoreManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &773537513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 773537512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37894e65a3ff29548a3a38c5372ae56b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &773537514
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 773537512}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &843957688
 GameObject:
   m_ObjectHideFlags: 0
@@ -1473,6 +1517,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1285754489}
   - component: {fileID: 1285754488}
+  - component: {fileID: 1285754491}
   - component: {fileID: 1285754490}
   m_Layer: 0
   m_Name: GameData
@@ -1530,6 +1575,18 @@ MonoBehaviour:
   - 
   - 
   - 
+--- !u!114 &1285754491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285754487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37894e65a3ff29548a3a38c5372ae56b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1353630576
 GameObject:
   m_ObjectHideFlags: 0
@@ -2006,6 +2063,7 @@ MonoBehaviour:
   groundTouchSFX: {fileID: 8300000, guid: 099552c0490400844a99e561b407b1f4, type: 3}
   nectarCollectSFX: {fileID: 8300000, guid: d9d36c6ba89fee741b9403d0496ee2eb, type: 3}
   nectarRefillCollectSFX: {fileID: 8300000, guid: c0309f5514f2dbe4ca401d31fcc2b129, type: 3}
+  winLevelSFX: {fileID: 8300000, guid: d7071727f8c66204c8d555bd799d30b8, type: 3}
   finishSFX: {fileID: 8300000, guid: 4a360f810c365d6469d6a21803022cdc, type: 3}
 --- !u!1 &1755076660
 GameObject:

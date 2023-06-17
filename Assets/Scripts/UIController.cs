@@ -33,8 +33,10 @@ public class UIController : MonoBehaviour
     void Start()
     {
         SetProgressBar();
-        scoreFinalText.SetText(GameData.Score.ToString());
+      //  SetStartScore();
+       UpdateScore();
         SetUpHint();
+
     }
     void SetProgressBar()
     {
@@ -58,8 +60,17 @@ public class UIController : MonoBehaviour
 
     public void UpdateScore()
     {
-        scoreText.SetText(GameData.Score.ToString());
-        scoreFinalText.SetText(GameData.Score.ToString());
+        scoreText.SetText(ScoreManager.Score.ToString());
+        scoreFinalText.SetText(ScoreManager.Score.ToString());
+
+        Debug.Log("We updated score: " + ScoreManager.Score);
+    }
+
+    public void SetStartScore()
+    {
+      //  scoreFinalText.SetText(ScoreManager.Score.ToString());
+        scoreText.SetText(ScoreManager.Score.ToString());
+
     }
 
     void SetUpHint()

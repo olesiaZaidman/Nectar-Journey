@@ -24,10 +24,19 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    public void BoostUp(float _modifier)
+    public void BoostUpAndSpendEnergy(float _modifier)
     {
 
-        rb.velocity = Vector3.up * velocity* _modifier;            // rb.AddForce(new Vector3(0, velocity, 0), ForceMode.Impulse);
+        rb.velocity = Vector3.up * velocity* _modifier;    
+        // rb.AddForce(new Vector3(0, velocity, 0), ForceMode.Impulse);
+        if (!spentEnergy)
+        {
+            spentEnergy = true;
+            GameData.DecreasePlayerHP(energySpent);
+            decreaseHealthBar.Invoke();
+            StartCoroutine(FlyCooldown());
+        }
+
     }
 
 
@@ -41,17 +50,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space)) //0 is left click
         {
-            BoostUp(1f);
-
-            if (!spentEnergy)
-            {
-                spentEnergy = true;
-                GameData.DecreasePlayerHP(energySpent);
-                decreaseHealthBar.Invoke();
-                StartCoroutine(FlyCooldown());
-            }
-
-
+            BoostUpAndSpendEnergy(1f);
             Vector3 mousePos = Input.mousePosition;
             float screenWidth = Screen.width;
 
