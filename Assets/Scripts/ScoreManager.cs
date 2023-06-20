@@ -17,14 +17,10 @@ public class ScoreManager : MonoBehaviour
     void Awake()
     {
         ManageSingleton();
-
         //        ResetScoreIfCertainScene();
 
     }
-    void Start()
-    {
-      
-    }
+
     void ManageSingleton()
     {
         if (instance != null)
@@ -53,7 +49,7 @@ public class ScoreManager : MonoBehaviour
     public static void SaveScoreAtLevelStart()
     {
         scoreAtLevelStart = score;
-        Debug.Log("scoreAtLevelStart: " + scoreAtLevelStart);
+   //     Debug.Log("scoreAtLevelStart: " + scoreAtLevelStart);
     }
 
     public static void ResetScoreOnReloadLevel() //we call it on ReloadGame() in SceneLoadManager

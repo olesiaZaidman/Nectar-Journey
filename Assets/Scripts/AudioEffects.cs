@@ -42,7 +42,7 @@ public class AudioEffects : MonoBehaviour
             gameVolume = 0.8f;
         }
 
-        Debug.Log("isMute: "+ isMute);
+     //   Debug.Log("isMute: "+ isMute);
     }
 
 

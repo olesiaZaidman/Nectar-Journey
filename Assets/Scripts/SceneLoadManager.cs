@@ -39,7 +39,7 @@ public class SceneLoadManager : MonoBehaviour
         if (Input.GetKey(KeyCode.Escape)) //Input.GetKey(KeyCode.Space)
         {
             QuitGame();
-            Debug.Log("Quit game");
+           // Debug.Log("Quit game");
         }
 
         if (Input.GetKey(KeyCode.N) && !isNext) //Input.GetKey(KeyCode.Space)
@@ -140,7 +140,7 @@ public class SceneLoadManager : MonoBehaviour
     {
         float _delay = 0.1f;
         int _sceneId = 1;
-        Debug.Log("Clicked");
+      //  Debug.Log("Clicked");
 
         if (Time.timeScale == 0)
         { Time.timeScale = 1; }

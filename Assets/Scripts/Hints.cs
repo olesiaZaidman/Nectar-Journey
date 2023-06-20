@@ -15,7 +15,7 @@ public class Hints : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("Array Length: " + hints.Length);
+      //  Debug.Log("Array Length: " + hints.Length);
         AddHints();
     }
 

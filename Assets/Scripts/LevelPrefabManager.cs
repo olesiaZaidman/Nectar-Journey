@@ -8,7 +8,7 @@ using TMPro;
 public class LevelPrefabManager : MonoBehaviour
 {
     public const int amountPrefabs = 10;
-    public TextMeshProUGUI debug;
+ //   public TextMeshProUGUI debug;
 
     public GameObject[] levelFlowerPrefabs;
     public GameObject[] levelHazardPrefabs;
@@ -46,7 +46,7 @@ public class LevelPrefabManager : MonoBehaviour
 
         else 
         {
-            Debug.Log("We lack the win level perfab for InsertWinLevelPrefab working properly");
+         //   Debug.Log("We lack the win level perfab for InsertWinLevelPrefab working properly");
         }
     }
 
@@ -57,8 +57,8 @@ public class LevelPrefabManager : MonoBehaviour
         // if (counter % 2 == 0)
         // {
 
-        Debug.Log("Difficulty was I increased" + GameData.LevelDifficulty);
-        debug.SetText("Difficulty was increased: " + GameData.LevelDifficulty);
+      //  Debug.Log("Difficulty was I increased" + GameData.LevelDifficulty);
+     //   debug.SetText("Difficulty was increased: " + GameData.LevelDifficulty);
         //  }
         levelPrefabs = AddRandomObjectsToList(GameData.LevelDifficulty);
 
@@ -66,7 +66,7 @@ public class LevelPrefabManager : MonoBehaviour
         {
 
             InsertWinLevelPrefab(winLevelPrefab, grassPrefab);
-            debug.SetText("You won the level!");
+         //   debug.SetText("You won the level!");
         }
 
         counter++;

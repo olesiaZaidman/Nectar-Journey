@@ -24,23 +24,23 @@ public class LanternController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(position, Vector3.down, out hit, raycastDistance))
         {
-            Debug.DrawRay(position, Vector3.down * raycastDistance, Color.red);
+          //  Debug.DrawRay(position, Vector3.down * raycastDistance, Color.red);
 
             // if (hit.collider.CompareTag("Hazard"))
             if (hit.transform.CompareTag("Hazard"))
             {
-                Debug.Log("Hazard is there");
-                Debug.Log("hit " + hit.transform.name);
-                Debug.DrawRay(position, Vector3.down * raycastDistance, Color.green);
+             //   Debug.Log("Hazard is there");
+            //    Debug.Log("hit " + hit.transform.name);
+             //   Debug.DrawRay(position, Vector3.down * raycastDistance, Color.green);
                 Destroy(gameObject);
             }
 
-            else if (hit.transform.CompareTag("Flower"))
-            {
-                Debug.Log("hit " + hit.transform.name);
-                Debug.DrawRay(position, Vector3.down * raycastDistance, Color.yellow);
+            //else if (hit.transform.CompareTag("Flower"))
+            //{
+            // //   Debug.Log("hit " + hit.transform.name);
+            ////    Debug.DrawRay(position, Vector3.down * raycastDistance, Color.yellow);
 
-            }
+            //}
         }
     }
 

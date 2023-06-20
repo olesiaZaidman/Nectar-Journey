@@ -4,26 +4,15 @@ using UnityEngine;
 
 public class FanRotator : MonoBehaviour
 {
-     float speed = 4f;
+    float speed = 4f;
     public float destroyThreshold = 10f;
-    float velocity = 4;
-    void Start()
-    {
-        
-    }
-
-
-    void Update()
-    {
-        //transform.Translate(new Vector3(1, 0, 0 * speed));
-    }
-
+    float velocity = 3;
+ 
     void FixedUpdate()
     {
         Move();
         DestroyAfterThresholdCheck();
         transform.Rotate(new Vector3(0, 0, -1* speed));
-
     }
 
     void DestroyAfterThresholdCheck()
@@ -31,7 +20,6 @@ public class FanRotator : MonoBehaviour
         if (transform.position.z > destroyThreshold)
         {
             Destroy(gameObject);
-
         }
     }
 

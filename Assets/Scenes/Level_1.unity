@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17484957, g: 0.21872157, b: 0.30100203, a: 1}
+  m_IndirectSpecularColor: {r: 0.43941417, g: 0.48775017, b: 0.56798756, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -738,7 +738,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -3132,7 +3132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0a2b6434305f5446b4e3e54701448fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: {fileID: 782628377}
   levelFlowerPrefabs:
   - {fileID: 8369655174634185803, guid: 8a997830a5a8b174f9c8ce7f18d7397e, type: 3}
   - {fileID: 3741218946565044961, guid: 63a6f84fbd0380748a867d77943670ec, type: 3}

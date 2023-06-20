@@ -16,8 +16,6 @@ public class GameData : MonoBehaviour
     public static bool isAudioOn = true;
     public static bool isGameFreeze = false;
 
-
-
     static float levelDifficultyMax;
     public static float LevelDifficultyMax { get { return levelDifficultyMax; } }
 
