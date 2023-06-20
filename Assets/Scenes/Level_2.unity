@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 175590, guid: 0846cb50ffdd96242a1d5755efc425fd, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 468624, guid: 0846cb50ffdd96242a1d5755efc425fd, type: 3}
       propertyPath: m_RootOrder
@@ -460,10 +460,10 @@ RectTransform:
   m_Father: {fileID: 1178382358}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.058522724}
-  m_AnchorMax: {x: 1, y: 0.119}
-  m_AnchoredPosition: {x: 21.330078, y: 12.950073}
-  m_SizeDelta: {x: -467.03, y: 52.96}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 21.330078, y: 182.95007}
+  m_SizeDelta: {x: 610.97, y: 168.95999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &237248928
 MonoBehaviour:
@@ -2597,6 +2597,63 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1001 &1000888301
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3143568809001869542, guid: 65fa7b672a4ffcf498b9c42bf70829f2, type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 3143568809001869542, guid: 65fa7b672a4ffcf498b9c42bf70829f2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -30.055151
+      objectReference: {fileID: 0}
+    - target: {fileID: 3143568809001869542, guid: 65fa7b672a4ffcf498b9c42bf70829f2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 13.511898
+      objectReference: {fileID: 0}
+    - target: {fileID: 3143568809001869542, guid: 65fa7b672a4ffcf498b9c42bf70829f2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -21.906559
+      objectReference: {fileID: 0}
+    - target: {fileID: 3143568809001869542, guid: 65fa7b672a4ffcf498b9c42bf70829f2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3143568809001869542, guid: 65fa7b672a4ffcf498b9c42bf70829f2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3143568809001869542, guid: 65fa7b672a4ffcf498b9c42bf70829f2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3143568809001869542, guid: 65fa7b672a4ffcf498b9c42bf70829f2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3143568809001869542, guid: 65fa7b672a4ffcf498b9c42bf70829f2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3143568809001869542, guid: 65fa7b672a4ffcf498b9c42bf70829f2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3143568809001869542, guid: 65fa7b672a4ffcf498b9c42bf70829f2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4030995754574698843, guid: 65fa7b672a4ffcf498b9c42bf70829f2, type: 3}
+      propertyPath: m_Name
+      value: Snow&WEbGLBlocks
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 65fa7b672a4ffcf498b9c42bf70829f2, type: 3}
 --- !u!1 &1000984860
 GameObject:
   m_ObjectHideFlags: 0
@@ -2726,10 +2783,10 @@ RectTransform:
   m_Father: {fileID: 556679461}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 535.55, y: -1305}
-  m_SizeDelta: {x: 194.9, y: 192.16}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -3.4500122, y: 615}
+  m_SizeDelta: {x: 194.90002, y: 192.16003}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1022449709
 MonoBehaviour:
